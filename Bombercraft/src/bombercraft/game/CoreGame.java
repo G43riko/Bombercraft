@@ -16,7 +16,7 @@ public abstract class CoreGame extends CoreEngine implements MenuAble{
 	protected int gameIs =  MAIN_MENU;
 	
 	private MainMenu mainMenu = new MainMenu(this);
-	private Game game;
+	private GameAble game;
 	private Communicable comunication;
 	
 	public CoreGame(){
@@ -49,8 +49,8 @@ public abstract class CoreGame extends CoreEngine implements MenuAble{
 	
 	@Override
 	protected void input() {
-		// TODO Auto-generated method stub
-		super.input();
+		if(game != null)
+			game.input();
 	}
 	
 	@Override
@@ -92,10 +92,14 @@ public abstract class CoreGame extends CoreEngine implements MenuAble{
 
 	@Override
 	public void createGame(Level level) {
-		game = new Game(level);
+		game = new Game(level, this);
 		gameIs = RUNNING;
 	}
 	
+	public Communicable getComunication() {
+		return comunication;
+	}
+
 	private void clearScreen(Graphics2D g2){
 		g2.setColor(Config.BACKGROUND_COLOR);
 		g2.fillRect(0, 0, getCanvas().getWidth(), getCanvas().getHeight());

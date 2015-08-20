@@ -1,7 +1,7 @@
-package bombercraft.gui;
+package bombercraft.gui.component;
 
-import glib.math.GColision;
-import glib.util.vector.GVector2f;
+import utils.GColision;
+import utils.GVector2f;
 
 import java.awt.Canvas;
 
@@ -40,6 +40,7 @@ public abstract class GuiComponent implements Interactable{
 	public void update(float delta) {
 		if(active)
 			hover = GColision.pointRectCollision(pos, size, Input.getMousePosition());
+		
 	}
 	
 	//dorobit

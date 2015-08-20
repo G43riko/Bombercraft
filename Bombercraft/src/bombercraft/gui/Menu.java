@@ -1,12 +1,16 @@
 package bombercraft.gui;
 
-import glib.util.vector.GVector2f;
+import utils.GVector2f;
 
 import java.awt.Canvas;
 import java.awt.Graphics2D;
 import java.util.HashMap;
 
 import bombercraft.Config;
+import bombercraft.gui.component.Button;
+import bombercraft.gui.component.GuiComponent;
+import bombercraft.gui.component.Switch;
+import core.Input;
 import core.Interactable;
 
 public abstract class Menu implements Interactable{
@@ -15,6 +19,7 @@ public abstract class Menu implements Interactable{
 	
 	public Menu(Canvas canvas){
 		this.canvas = canvas;
+		Input.addMenu(this);
 	}
 	
 	protected void addButton(String val, String txt){

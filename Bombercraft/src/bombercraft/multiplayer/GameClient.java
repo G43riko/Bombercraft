@@ -1,7 +1,9 @@
 package bombercraft.multiplayer;
 
-import glib.util.vector.GVector2f;
-import bombercraft.game.Bomb;
+import utils.GVector2f;
+import bombercraft.game.Player;
+import bombercraft.game.entity.Helper;
+import bombercraft.game.entity.helper.Bomb;
 import bombercraft.game.level.Level;
 
 public class GameClient implements Communicable{
@@ -13,23 +15,10 @@ public class GameClient implements Communicable{
 	}
 
 	@Override
-	public void sendImage() {
+	public void putBomb(Player player) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void putBomb(GVector2f position) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isReady() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@Override
 	public void eatItem(GVector2f sur, int type) {
 		// TODO Auto-generated method stub
@@ -58,6 +47,12 @@ public class GameClient implements Communicable{
 	public GVector2f getMyPosition() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void putHelper(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

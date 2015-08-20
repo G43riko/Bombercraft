@@ -1,6 +1,7 @@
 package bombercraft.gui;
 
-import glib.util.vector.GVector2f;
+import utils.GLog;
+import utils.GVector2f;
 import bombercraft.game.CoreGame;
 import bombercraft.game.MenuAble;
 
@@ -31,6 +32,8 @@ public class MainMenu extends Menu{
 //		OptionsMenu = new OptionsMenu(parent.getCanvas(), this); 
 		
 		actMenu = MAIN_MENU;
+		
+		GLog.write(GLog.CREATE, "MainMenu vytvorené");
 	}
 	
 	public void setGameLaunched(boolean value){
@@ -56,8 +59,8 @@ public class MainMenu extends Menu{
 			else if(components.get("exit").isClickIn(click))
 				parent.exitGame();
 		}
-		else if(actMenu == OPTIONS)
-			OptionsMenu.doAct(click);
+//		else if(actMenu == OPTIONS)
+//			OptionsMenu.doAct(click);
 	}
 
 }

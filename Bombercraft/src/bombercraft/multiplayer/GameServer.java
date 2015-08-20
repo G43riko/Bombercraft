@@ -1,8 +1,11 @@
 package bombercraft.multiplayer;
 
-import glib.util.vector.GVector2f;
-import bombercraft.game.Bomb;
+import utils.GLog;
+import utils.GVector2f;
 import bombercraft.game.CoreGame;
+import bombercraft.game.Player;
+import bombercraft.game.entity.Helper;
+import bombercraft.game.entity.helper.Bomb;
 import bombercraft.game.level.Level;
 
 public class GameServer implements Communicable{
@@ -11,6 +14,7 @@ public class GameServer implements Communicable{
 	public GameServer(CoreGame coreGame){
 		actLevel = new Level();
 		coreGame.createGame(actLevel);
+		GLog.write(GLog.CREATE, "GameServer vytvorený");
 	}
 	
 	
@@ -21,21 +25,9 @@ public class GameServer implements Communicable{
 	}
 
 	@Override
-	public void sendImage() {
+	public void putBomb(Player player) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void putBomb(GVector2f position) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isReady() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -65,6 +57,12 @@ public class GameServer implements Communicable{
 	public GVector2f getMyPosition() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void putHelper(Player player) {
+		actLevel.getParent().addHelper(player.getPosition(), (int)(1000 + Math.random() * 2));
 	}
 
 }
