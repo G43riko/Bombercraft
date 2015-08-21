@@ -1,0 +1,15 @@
+position
+size
+backgroundColor
+borderColor
+borderWidth
+round
+offset
+text
+textSize
+textOffset
+textColor
+hover
+hoverColor
+parent - position
+       - size
