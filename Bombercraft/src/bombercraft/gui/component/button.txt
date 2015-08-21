@@ -18,4 +18,4 @@ public boolean clickIn();
 public boolean isClickIn(GVector2f click);
 public void updateSize();
 public boolean isActive();
-public boolean 
+public void calcPosition(); 
