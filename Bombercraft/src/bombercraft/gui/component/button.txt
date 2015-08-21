@@ -13,3 +13,9 @@ hover
 hoverColor
 parent - position
        - size
+       
+public boolean clickIn();
+public boolean isClickIn(GVector2f click);
+public void updateSize();
+public boolean isActive();
+public boolean 
