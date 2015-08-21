@@ -2,11 +2,14 @@ package bombercraft.game.level;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import bombercraft.Config;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
 import utils.GVector2f;
+import utils.LineLineIntersect;
 
 public class Block extends Entity{
 	public final static int GRASS 	= 100;
@@ -36,7 +39,7 @@ public class Block extends Entity{
 	
 	@Override
 	public void render(Graphics2D g2) {
-		GVector2f size =SIZE.mul(getParent().getZoom());
+		GVector2f size = SIZE.mul(getParent().getZoom());
 		GVector2f pos = position.mul(size).sub(getParent().getOffset());
 		
 		g2.setColor(new Color(type * 85, type * 85, type * 85));
@@ -52,7 +55,10 @@ public class Block extends Entity{
 	
 	public boolean hit(int demage){
 		healt -= demage;
-		return healt <= 0;
+		boolean res = healt <= 0;
+		if(res)
+			type = 0;
+		return res;
 	}
 	
 	//GETTERS
@@ -74,6 +80,22 @@ public class Block extends Entity{
 	@Override
 	public GVector2f getSur() {
 		return position.div(SIZE).toInt();
+	}
+	
+	public GVector2f getInterSect(GVector2f ss, GVector2f se){
+		ArrayList<GVector2f> res = new ArrayList<GVector2f>();
+		
+		GVector2f p = position.mul(Block.SIZE);
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p));
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p));
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p.add(Block.SIZE)));
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p.add(Block.SIZE)));
+		
+		res = res.stream().filter(a -> a != null).collect(Collectors.toCollection(ArrayList::new));
+		if(res.size() == 0)
+			return null;
+
+		return res.stream().reduce((a, b) -> a.dist(ss) < b.dist(ss) ? a : b).get();
 	}
 
 }

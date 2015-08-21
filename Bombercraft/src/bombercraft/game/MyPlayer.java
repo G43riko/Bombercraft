@@ -1,25 +1,33 @@
 package bombercraft.game;
 
+import java.awt.BasicStroke;
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.HashMap;
 
 import bombercraft.Config;
 import bombercraft.game.level.Block;
 import core.Input;
 import utils.GVector2f;
+import utils.Utils;
 
 public class MyPlayer extends Player{
 	private GVector2f move = new GVector2f();
 	private GVector2f totalMove = new GVector2f();
 	private Canvas canvas;
 	private GVector2f offset;
+	private boolean showSelector = true;
+	
+	private int selectorWidth = 2;
+	private Color selectorColor = Color.magenta;
 	private HashMap<Integer, Boolean> keys = new HashMap<Integer, Boolean>(); 
 		
 	public MyPlayer(GameAble parent, GVector2f position, String name, int speed, int healt, String image, int range) {
 		super(parent, position, name, speed, healt, image, range);
 		canvas = parent.getCanvas();
-		offset = new GVector2f(canvas.getWidth(),canvas.getHeight()).div(-2);
-		 
+		resetOffset();
+		
 		keys.put(Input.KEY_W, false);
 		keys.put(Input.KEY_A, false);
 		keys.put(Input.KEY_S, false);
@@ -29,7 +37,11 @@ public class MyPlayer extends Player{
 	public GVector2f getOffset() {
 		return offset;
 	}
-
+	
+	private void resetOffset(){
+		offset = new GVector2f(canvas.getWidth(),canvas.getHeight()).div(-2);;
+	}
+	
 	@Override
 	public void input(){
 		if(Input.isKeyDown(Input.KEY_SPACE))
@@ -189,5 +201,17 @@ public class MyPlayer extends Player{
 	
 	public void clearTotalMove(){
 		totalMove = new GVector2f(); 
+	}
+	
+	public void drawSelector(Graphics2D g2){
+		GVector2f pos = getSelectorPos().sub(getParent().getOffset());
+		
+		g2.setStroke(new BasicStroke(selectorWidth));
+		g2.setColor(selectorColor);
+		g2.drawRect(pos.getXi(), pos.getYi(), Block.SIZE.getXi(), Block.SIZE.getYi());
+	}
+
+	public boolean showSelector() {
+		return showSelector;
 	}
 }

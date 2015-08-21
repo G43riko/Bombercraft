@@ -6,6 +6,7 @@ import bombercraft.game.CoreGame;
 import bombercraft.game.Player;
 import bombercraft.game.entity.Helper;
 import bombercraft.game.entity.helper.Bomb;
+import bombercraft.game.entity.helper.Tower;
 import bombercraft.game.level.Level;
 
 public class GameServer implements Communicable{
@@ -62,7 +63,16 @@ public class GameServer implements Communicable{
 
 	@Override
 	public void putHelper(Player player) {
-		actLevel.getParent().addHelper(player.getPosition(), (int)(1000 + Math.random() * 2));
+		actLevel.getParent().addHelper(player.getSelectorPos(), (int)(1000 + Math.random() * 2));
+	}
+
+
+	@Override
+	public void putBullet(Tower tower) {
+		actLevel.getParent().addBullet(tower.getPosition(), 
+									   tower.getDirection(), 
+									   tower.getBulletSpeed(), 
+									   tower.getDemage(), 1);
 	}
 
 }

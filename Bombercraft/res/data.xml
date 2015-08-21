@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<helper>
+		<tower>
+			<towerMachineGun>
+				<offset></offset>
+				<color></color>
+				<demage>1</demage>
+				<bulletSpeed>12</bulletSpeed>
+				<buletHealt>1</buletHealt>
+				<range>100</range>
+				<accularity>100</accularity>
+				<canon>
+					<speed>5</speed>
+					<color></color>
+					<width>5</width>
+					<length>40</length>
+				</canon>
+			</towerMachineGun>
+			<towerLaser></towerLaser>
+			<towerSniper></towerSniper>
+			<towerRocket></towerRocket>
+			<towerFlame></towerFlame>
+		</tower>
+		<bomb>
+			<bombClasic></bombClasic>
+			<bombAtom></bombAtom>
+			<bombNano></bombNano>
+			<bombFreeze></bombFreeze>
+			<bombSlime></bombSlime>
+			<bombFire></bombFire>
+		</bomb>
+	</helper>
+	<enemy>
+		<enemyClasis>
+			<offset>5</offset>
+			<speed>1</speed>
+			<demage>1</demage>
+			<cadence>200</cadence>
+			<bulletSpeed>4</bulletSpeed>
+			<healt>1</healt>
+		</enemyClasis>		
+	</enemy>
+</data>

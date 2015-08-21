@@ -15,7 +15,7 @@ public abstract class Bullet extends Entity{
 	private int speed;
 	private int healt;
 	private int demage;
-	private Color color;
+	private Color color = Color.blue;
 	
 	public Bullet(GVector2f position, GameAble parent, GVector2f direction, int speed, int healt, int demage, int round, int offset) {
 		super(position, parent);
@@ -23,7 +23,7 @@ public abstract class Bullet extends Entity{
 		this.demage = demage;
 		this.speed = speed;
 		this.healt = healt;
-		size = size.sub(offset * 2);
+		size = Block.SIZE.sub(offset * 2);
 	}
 
 	@Override
@@ -33,16 +33,21 @@ public abstract class Bullet extends Entity{
 		g2.setColor(color);
 		g2.fillRoundRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), round, round);
 
-		g2.setColor(Color.BLACK);
-		g2.drawRoundRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), round, round);
+//		g2.setColor(Color.BLACK);
+//		g2.drawRoundRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), round, round);
 	}
 	
 	@Override
 	public void update(float delta) {
 		Block block = getParent().getLevel().getMap().getBlockOnPosition(getPosition().add(Block.SIZE.div(2)));
+		
+		
 		if(block != null && block.getType() != Block.NOTHING){
 			healt--;
 			block.hit(demage);
+		}
+		else if(getParent().bulletHitEnemy(this)){
+			healt--;
 		}
 		
 		if(healt <= 0)
@@ -52,5 +57,9 @@ public abstract class Bullet extends Entity{
 		if(alive)
 			position = position.add(direction.mul(speed));
 		
+	}
+
+	public int getDemage() {
+		return demage;
 	}
 }

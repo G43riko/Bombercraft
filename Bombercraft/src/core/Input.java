@@ -10,6 +10,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import bombercraft.gui.Clicable;
 import bombercraft.gui.Menu;
 
 public class Input implements KeyListener, MouseListener, MouseMotionListener {
@@ -41,7 +42,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 		input = this;
 	}
 	
-	private static ArrayList<Menu> menus = new ArrayList<Menu>();
+	private static ArrayList<Clicable> menus = new ArrayList<Clicable>();
 	
 	private static GVector2f mousePosition = new GVector2f();
 	
@@ -73,7 +74,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		menus.stream().forEach(a -> a.doAct(new GVector2f(e.getX(), e.getY())));
+		new ArrayList<Clicable>(menus).stream().forEach(a -> a.doAct(new GVector2f(e.getX(), e.getY())));
 	}
 
 	@Override
@@ -114,7 +115,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 		
 	}
 	
-	public static void addMenu(Menu menu){
+	public static void addMenu(Clicable menu){
 		menus.add(menu);
 	}
 

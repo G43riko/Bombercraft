@@ -4,6 +4,7 @@ import utils.GVector2f;
 import bombercraft.game.Player;
 import bombercraft.game.entity.Helper;
 import bombercraft.game.entity.helper.Bomb;
+import bombercraft.game.entity.helper.Tower;
 import bombercraft.game.level.Level;
 
 public class GameClient implements Communicable{
@@ -51,6 +52,12 @@ public class GameClient implements Communicable{
 
 	@Override
 	public void putHelper(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void putBullet(Tower tower) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -21,6 +21,8 @@ public class Enemy extends Entity{
 	private long lastShot;
 	private int attack;
 	private int healt;
+	private int maxHealt;
+	private int maxSpeed;
 	
 	private float borderSize = 1;
 	private Color borderColor = Color.white;
@@ -29,13 +31,13 @@ public class Enemy extends Entity{
 	public Enemy(GVector2f position, Game parent, int speed, int bulletSpeed, int cadence, int attack, int healt) {
 		this(position, 
 			 parent, 
-			 Config.ENEMY_DEFAULT_SPEED, 
-			 Config.ENEMY_DEFAULT_BULLET_SPEED, 
-			 Config.ENEMY_DEFAULT_CADENCE, 
-			 Config.ENEMY_DEFAULT_ATTACK,
+			 speed, 
+			 bulletSpeed, 
+			 cadence, 
+			 attack,
 			 System.currentTimeMillis() - cadence, 
 			 -2,
-			 Config.ENEMY_DEFAULT_HEALT);
+			 healt);
 	}
 	
 	public Enemy(GVector2f position, GameAble parent, int speed, int bulletSpeed, int cadence, int attack, long lastShot, int direction, int healt){
@@ -47,8 +49,8 @@ public class Enemy extends Entity{
 		this.position = position;
 		this.cadence = cadence;
 		this.attack = attack;
-		this.speed = speed;
-		this.healt = healt;
+		this.speed = maxSpeed = speed;
+		this.healt = maxHealt = healt;
 		
 		color = Color.CYAN;
 		
@@ -77,11 +79,19 @@ public class Enemy extends Entity{
 		
 		
 		g2.setStroke(new BasicStroke(getParent().getZoom() * borderSize));
+		
 		g2.setColor(color);
 		g2.fillRoundRect(pos.getXi(), pos.getYi(), tempSize.getXi(), tempSize.getYi(), tempRound, tempRound);
 
 		g2.setColor(borderColor);
 		g2.drawRoundRect(pos.getXi(), pos.getYi(), tempSize.getXi(), tempSize.getYi(), tempRound, tempRound);
+
+		g2.setStroke(new BasicStroke(getParent().getZoom() * 1));
+		g2.setColor(Color.red);
+		g2.drawRect(pos.getXi(), pos.getYi() - 6, tempSize.getXi(), 4);
+		
+		if(healt > 0)
+			g2.fillRect(pos.getXi(), pos.getYi() - 6, (int)(tempSize.getX() * healt / maxHealt) , 4);
 	}
 	
 	//dorobi
@@ -109,9 +119,20 @@ public class Enemy extends Entity{
 	
 	public void fire() {
 		if(direction >= 0 && (System.currentTimeMillis() - lastShot) >= cadence){
-			getParent().addBullet(position, direction, bulletSpeed, attack, Config.BULLET_DEFAULT_HEALT);
+			getParent().addBullet(position, 
+								  Utils.getMoveFromDir(direction), 
+								  bulletSpeed, 
+								  attack, 
+								  Config.BULLET_DEFAULT_HEALT);
+			
 			lastShot = System.currentTimeMillis();
 		}
+	}
+	
+	public void hit(int demage){
+		healt -= demage;
+		if(healt <= 0)
+			alive = false;
 	}
 
 	@Override

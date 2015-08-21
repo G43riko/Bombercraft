@@ -100,9 +100,10 @@ public class GVector2f implements Serializable{
 		return distX * distX + distY * distY;
 	}
 	
-	public void negate(){
+	public GVector2f negate(){
 		this.x *= -1;
 		this.y *= -1;
+		return this;
 	}
 	
 	public float angleBetween(GVector2f v) {

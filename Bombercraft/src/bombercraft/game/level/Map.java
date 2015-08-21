@@ -3,6 +3,7 @@ package bombercraft.game.level;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import bombercraft.game.GameAble;
@@ -13,37 +14,52 @@ public class Map implements Interactable{
 	private HashMap<String, Block> blocks;
 	private GVector2f numberOfBlocks;
 	private GameAble parent;
+	private boolean render = true;
 	
 	//CONSTRUCTORS
 	
 	public Map(GameAble parent){
 		this.parent = parent;
-		createRandomMap(40, 40);
+		
+		numberOfBlocks = new GVector2f(80, 80);
+		
+		createRandomMap();
 	}
 	
-	private void createRandomMap(int x, int y){
+	public void createRandomMap(){
+		render = false;
 		blocks = new HashMap<String, Block>();
-		numberOfBlocks = new GVector2f(x, y);
 		
-		for(int i=0 ; i<x ; i++){
-			for(int j=0 ; j<y ; j++){
+		for(int i=0 ; i<numberOfBlocks.getXi() ; i++){
+			for(int j=0 ; j<numberOfBlocks.getYi() ; j++){
 				addBlock(i, j, new Block(new GVector2f(i,j),(int)(Math.random() * 3), parent));
 			}
 		}
+		clearRespawnZones(parent.getLevel().getRespawnZones());
+		render = true;
 	}
 	
 	//OVERRIDES
 
 	@Override
 	public void render(Graphics2D g2) {
-		blocks.entrySet()
-		      .stream()
-		      .map(a -> a.getValue())
-		      .filter(getParent()::isVisible)
-		      .forEach(a -> a.render(g2));
+		if(!render)
+			return;
+		new HashMap<String, Block>(blocks).entrySet()
+		      							  .stream()
+		      							  .map(a -> a.getValue())
+		      							  .filter(getParent()::isVisible)
+		      							  .forEach(a -> a.render(g2));
 	}
 
 	//OTHERS
+	
+	private void clearRespawnZones(List<GVector2f> zones){
+		zones.stream().forEach(a -> {
+			GVector2f resp = a.div(Block.SIZE);
+			blocks.put(resp.toString(), new Block(resp, Block.NOTHING, parent));
+		});
+	}
 	
 	public int[] getPossibleWays(GVector2f sur){
 		ArrayList<Integer> result = new ArrayList<Integer>();
@@ -95,6 +111,12 @@ public class Map implements Interactable{
 	}
 	
 	//GETTERS
+	public ArrayList<Block> getBlocks(){
+		if(render)
+			return new ArrayList<Block>(blocks.values());
+		
+		return new ArrayList<Block>();
+	}
 	
 	public GVector2f getNumberOfBlocks() {return numberOfBlocks;}
 	public Block getBlock(String block){return blocks.get(block);}	

@@ -13,7 +13,7 @@ import bombercraft.gui.component.Switch;
 import core.Input;
 import core.Interactable;
 
-public abstract class Menu implements Interactable{
+public abstract class Menu implements Interactable, Clicable{
 	protected HashMap<String,GuiComponent> components = new HashMap<String,GuiComponent>();
 	private Canvas canvas;
 	
@@ -51,6 +51,4 @@ public abstract class Menu implements Interactable{
 				  .stream()
 				  .forEach(a -> a.getValue().updateSize());
 	}
-	
-	public abstract void doAct(GVector2f click);
 }

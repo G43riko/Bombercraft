@@ -1,0 +1,2 @@
++healtbar
++veža pri výbere ciela si vyberie najbližšieho nie náhodného nepriatela

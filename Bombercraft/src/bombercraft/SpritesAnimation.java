@@ -38,6 +38,7 @@ private static HashMap<String, SpritesAnimation> animations = new HashMap<String
 		
 		if(sprite == null)
 			return;
+
 		
 		GVector2f position2 = position.add(size);
 		int sourceX = sprite.step * sprite.imageSize.getXi();

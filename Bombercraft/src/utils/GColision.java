@@ -35,7 +35,10 @@ public class GColision {
 	};
 	
 	public static boolean pointRectCollision(GVector2f aPos, GVector2f aSize, GVector2f bPos){
-		return bPos.getX() > aPos.getX() && bPos.getX() < aPos.getX() + aSize.getX() && bPos.getY() > aPos.getY() && bPos.getY() < aPos.getY() + aSize.getY();
+		return bPos.getX() > aPos.getX() && 
+			   bPos.getX() < aPos.getX() + aSize.getX() && 
+			   bPos.getY() > aPos.getY() && 
+			   bPos.getY() < aPos.getY() + aSize.getY();
 	};
 	
 	/**

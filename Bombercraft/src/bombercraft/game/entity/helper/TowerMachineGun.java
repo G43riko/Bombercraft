@@ -6,15 +6,18 @@ import java.util.ArrayList;
 
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Enemy;
-import bombercraft.game.level.Block;
 import utils.GVector2f;
 
 public class TowerMachineGun extends Tower{
-	private double angle = -1;
 	
 	public TowerMachineGun(GVector2f position, GameAble parent) {
 		super(position, parent, 200, 1, 100, 5, 40);
 		setRandTarget();
+	}
+	
+	@Override
+	public void update(float delta) {
+		
 	}
 	
 	@Override
@@ -39,24 +42,24 @@ public class TowerMachineGun extends Tower{
 		
 		pos = pos.add(size.div(2));
 		
-		GVector2f targetPos = new GVector2f();
 		if(target != null){
-			targetPos = target.getPosition();
-			if(targetPos.sub(getParent().getOffset()).dist(pos) > getRange()){
+			GVector2f dir = position.sub(target.getPosition()).Normalized();
+			angle = Math.atan2(dir.getX(), dir.getY());
+			
+			if(target.getPosition().dist(position) > getRange() || !target.isAlive())
 				target = null;
-			}
 		}
 		else {
 			if(angle == -1)
 				angle = Math.random() * 360;
-			targetPos = position.add(new GVector2f(Math.sin(angle), Math.cos(angle)).mul(cannonLength * getParent().getZoom()));
 			setRandTarget();
 		}	 
 		
-		GVector2f toMouse = targetPos.add(Block.SIZE.div(2)).sub(getParent().getOffset()).sub(pos).Normalized();
+		GVector2f toMouse = getDirection();
 		GVector2f point2 = pos.add(toMouse.mul(cannonLength * getParent().getZoom()));
 			
-		
+		if(Math.random() < 0.01)
+			shot();
 		
 		g2.setStroke(new BasicStroke(cannonWidth * getParent().getZoom()));
 		g2.setColor(canonColor);
@@ -64,10 +67,15 @@ public class TowerMachineGun extends Tower{
 	}
 	
 	private void setRandTarget(){
-		ArrayList<Enemy> enemies = getParent().getEnemiesAround(position, 200);
+		ArrayList<Enemy> enemies = getParent().getEnemiesAround(position, getRange());
 		
-		if(enemies.size() > 0)
-			target = enemies.get((int)(Math.random() * enemies.size()));
+		if(enemies.size() > 0){
+			//target = enemies.get((int)(Math.random() * enemies.size())); -- vyberalo náhodného nie najbližšie
+			target = enemies.stream()
+							.reduce((a, b) -> a.getPosition().dist(position) > b.getPosition().dist(position) ? a : b).get();
+			GVector2f dir = position.sub(target.getPosition()).Normalized();
+			angle = Math.toDegrees(Math.atan2(dir.getX(), dir.getY()));
+		}
 	}
 
 	@Override
@@ -75,7 +83,6 @@ public class TowerMachineGun extends Tower{
 		return "";
 	}
 
-	
 
 
 }

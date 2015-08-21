@@ -5,6 +5,7 @@ import java.util.HashMap;
 import bombercraft.game.Player;
 import bombercraft.game.entity.Helper;
 import bombercraft.game.entity.helper.Bomb;
+import bombercraft.game.entity.helper.Tower;
 import bombercraft.game.level.Level;
 import utils.GVector2f;
 
@@ -25,4 +26,6 @@ public interface Communicable {
 	};
 	
 	public void putHelper(Player player);
+	public void putBullet(Tower tower);
+//	public void newGame();
 }

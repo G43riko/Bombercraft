@@ -3,6 +3,7 @@ package core;
 import java.awt.Canvas;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import bombercraft.Config;
 
@@ -112,17 +113,12 @@ public abstract class CoreEngine {
 		}
 		g2 = (Graphics2D)buffer.getDrawGraphics();
 		
-		
-		//BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
-		//Graphics2D g = (Graphics2D)image.getGraphics();
-		
 		render(g2);
 		
-		//image = PostFX.bloomEffect(image);
-		
-		
-		//g2.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
-		
+//		BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
+//		render((Graphics2D)image.getGraphics());
+//		g2.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
+
 		g2.dispose();
 		buffer.show();
 	}
@@ -160,5 +156,5 @@ public abstract class CoreEngine {
 	}
 
 	
-	public void onResize() {}
+	public abstract void onResize();
 }

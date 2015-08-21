@@ -109,4 +109,10 @@ public abstract class CoreGame extends CoreEngine implements MenuAble{
 	public int gameIs() {
 		return gameIs;
 	}
+	
+	@Override
+	public void onResize() {
+		if(game != null)
+			game.calcPosition();;
+	}
 }

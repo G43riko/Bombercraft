@@ -10,13 +10,14 @@ import bombercraft.game.level.Block;
 
 public abstract class Tower extends Helper{
 	protected Entity target = null;
-	private int range = 200;
+	private int range ;
 	private int accularity;
+	private int bulletSpeed = 12;
 	private int demage;
 	protected int cannonWidth;
 	protected int cannonLength;
 	protected Color canonColor = Color.YELLOW;
-	
+	protected double angle = -1;
 	protected float borderSize = 1;
 	protected Color borderColor = Color.white;
 	protected Color color = Color.cyan;
@@ -44,5 +45,21 @@ public abstract class Tower extends Helper{
 	@Override
 	public GVector2f getSize() {
 		return Block.SIZE;
+	}
+	
+	public void shot(){
+		getParent().getConnection().putBullet(this);
+	}
+
+	public GVector2f getDirection() {
+		return new GVector2f(Math.sin(angle), Math.cos(angle)).negate();
+	}
+
+	public int getBulletSpeed() {
+		return bulletSpeed;
+	}
+
+	public int getDemage() {
+		return demage;
 	}
 }

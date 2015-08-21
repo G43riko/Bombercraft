@@ -6,6 +6,7 @@ import bombercraft.SpritesAnimation;
 import bombercraft.game.entity.Entity;
 import bombercraft.game.level.Block;
 import utils.GVector2f;
+import utils.Utils;
 
 public class Player extends Entity{
 	private int speed;
@@ -59,7 +60,17 @@ public class Player extends Entity{
 	public String toJSON() {
 		return "";
 	}
+	public GVector2f getSelectorPos(){
+		GVector2f pos = getPosition().add(Block.SIZE.div(2)).div(Block.SIZE).toInt();
+		pos = pos.add(Utils.getNormalMoveFromDir(getDirection())).mul(Block.SIZE);
+		return pos;
+	}
+	
 
+	public void respawn() {
+		position = getParent().getLevel().getPlayerRespawnZone();
+	}
+	
 	@Override
 	public GVector2f getSur() {
 		return position.div(Block.SIZE).toInt();
