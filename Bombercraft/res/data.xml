@@ -69,14 +69,6 @@
 		</weapon>
 	</helper>
 	<enemy>
-		<enemyBasic>
-			<offset>5</offset>
-			<speed>1</speed>
-			<demage>1</demage>
-			<cadence>200</cadence>
-			<bulletSpeed>4</bulletSpeed>
-			<healt>1</healt>
-		</enemyBasic>
 		<enemyA>
 			<offset>5</offset>
 			<speed>1</speed>
@@ -85,6 +77,14 @@
 			<bulletSpeed>4</bulletSpeed>
 			<healt>1</healt>
 		</enemyA>
+		<enemyB>
+			<offset>5</offset>
+			<speed>1</speed>
+			<demage>1</demage>
+			<cadence>200</cadence>
+			<bulletSpeed>4</bulletSpeed>
+			<healt>1</healt>
+		</enemyB>
 		<enemyC>
 			<offset>5</offset>
 			<speed>1</speed>

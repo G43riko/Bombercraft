@@ -1,5 +1,6 @@
 package bombercraft.game.entity;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
@@ -27,6 +28,18 @@ public class Worker extends Bot{
 		int r = (int)(round * getParent().getZoom());
 		g2.setColor(color);
 		g2.fillRoundRect(totalPos.getXi(), totalPos.getYi(), totalSize.getXi(), totalSize.getYi(), r, r);
+		
+		g2.setColor(Color.white);
+		g2.setStroke(new BasicStroke(6, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
+		
+		int offset = 3;
+		g2.drawLine(totalPos.getXi() + offset, totalPos.getYi() - totalSize.getYi() / 2, 
+					totalPos.getXi() + offset, totalPos.getYi() + totalSize.getYi() / 2);
+		g2.drawLine(totalPos.getXi() - offset + totalSize.getXi(), totalPos.getYi() - totalSize.getYi() / 2, 
+					totalPos.getXi() - offset + totalSize.getXi(), totalPos.getYi() + totalSize.getYi() / 2);
+		
+		
+		
 	}
 	
 	@Override
