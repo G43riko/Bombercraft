@@ -1,2 +1,73 @@
++Enemy
++tower
++laserTower
++line-rect collision
 +healtbar
 +veûa pri v˝bere ciela si vyberie najbliûöieho nie n·hodnÈho nepriatela
++vytvoriù kopiu mapy pre novÈho hr·Ëa
++Helper removers
++weapons
++tower lightning
++bombs
++worker
++create class Bot
++implements pathfinding
++draw path 
++Helper block builder
+
+-fix tower 
+-fix bullet collision detection
+-helper - bombs
+-postFX
+-fix enemy block collision while zoom
+-job Manager
+-list of Quests
+-come first/come all, come here and go back
+-block info about selected block
+-block info disappear when block became invisible
+-fix freezing after adding block
+
+
+=gui
++	navBar
++	sideBar
++	minimap
++	defualtGuiSystem
++	make buttons enable/disable
+
+=profiling
++	load profil
++	save profil
++	profilMenu
++	player has own profile
+-	createProfil
+
+=multiplayer
++	vöetci budu vidieù ako sa hybe serverov˝ hr·Ë
++	vöetci budu vidieù ako sa h˝bu vöetci hr·Ëy
+-	bude sa novÈmu clientovy posielaù iba jeho respawnZona
+-	list of games
+
+=pathfinding
++	s HashMapy<String, Integer> kde 1, 0 = prie/nepriechodne, 2 - start, 3 - ciel - vytvorÌ cestu
+- 	s HashMapy<String, Integer, kde cislo je dist k cielu najde najkradöiu cestu k cielu
+-	s ArrayList<String> 1- start, 2 - ciel  >2 - others kde string je sur posklad· najkradöiu cestu
+ 
+
+cts - request to connection
+stc - game, players, max players, ip, time, mapName
+cts - name, image
+stc - map, position, players,
+
+
+
+CLIENT								server
+
+putHelper  -------------------->addBomb
+			\------------------>addHelper
+			
+	
+	
+position
+direction
+

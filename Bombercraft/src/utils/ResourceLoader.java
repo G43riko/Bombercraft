@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class ResourceLoader {
 	private static HashMap<String, Image> loadedTextures = new HashMap<String, Image>();
-	private static InputStream load(String fileName){
+	public static InputStream load(String fileName){
 		InputStream input = ResourceLoader.class.getResourceAsStream(fileName);
 		if(input == null){
 			input = ResourceLoader.class.getResourceAsStream("/"+fileName);

@@ -2,10 +2,12 @@ package core;
 
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
-public class Window extends JFrame implements ComponentListener{
+public class Window extends JFrame implements ComponentListener, WindowListener{
 	private static final long serialVersionUID = 1L;
 	private CoreEngine parent;
 
@@ -15,32 +17,22 @@ public class Window extends JFrame implements ComponentListener{
 		setResizable(true);
 		setSize(width, height);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		setVisible(true);
+		
 		addComponentListener(this);
 	}
 
-	@Override
-	public void componentHidden(ComponentEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void componentMoved(ComponentEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
+	public void componentHidden(ComponentEvent e) {}
+	public void componentMoved(ComponentEvent e) {}
+	public void componentShown(ComponentEvent e) {}
+	public void windowDeactivated(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {}
+	public void windowActivated(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {}
+	public void windowClosing(WindowEvent e) {}
+	public void windowOpened(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {}
 	public void componentResized(ComponentEvent e) {
 		parent.onResize();
-		
-	}
-
-	@Override
-	public void componentShown(ComponentEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }

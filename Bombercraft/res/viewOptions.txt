@@ -1,0 +1,8 @@
+towerLasers = true
+towerRange = true
+renderShadow = false
+renderMiniMap = false
+renderLogs = false
+renderLights = false
+renderBombRange = true
+renderOnlyLightMap = false

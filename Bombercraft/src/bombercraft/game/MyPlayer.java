@@ -1,7 +1,6 @@
 package bombercraft.game;
 
 import java.awt.BasicStroke;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.HashMap;
@@ -10,22 +9,20 @@ import bombercraft.Config;
 import bombercraft.game.level.Block;
 import core.Input;
 import utils.GVector2f;
-import utils.Utils;
 
 public class MyPlayer extends Player{
-	private GVector2f move = new GVector2f();
-	private GVector2f totalMove = new GVector2f();
-	private Canvas canvas;
-	private GVector2f offset;
-	private boolean showSelector = true;
+	private GVector2f	offset;
+	private GVector2f	move			= new GVector2f();
+	private GVector2f	totalMove		= new GVector2f();
+	private boolean		showSelector	= true;
+	private int			selectorWidth	= Config.PLAYER_DEFAULT_SELECTOR_WIDTH;
+	private Color		selectorColor	= Config.PLAYER_DEFAULT_SELECTOR_COLOR;
 	
-	private int selectorWidth = 2;
-	private Color selectorColor = Color.magenta;
+	
 	private HashMap<Integer, Boolean> keys = new HashMap<Integer, Boolean>(); 
 		
 	public MyPlayer(GameAble parent, GVector2f position, String name, int speed, int healt, String image, int range) {
 		super(parent, position, name, speed, healt, image, range);
-		canvas = parent.getCanvas();
 		resetOffset();
 		
 		keys.put(Input.KEY_W, false);
@@ -34,31 +31,12 @@ public class MyPlayer extends Player{
 		keys.put(Input.KEY_D, false);
 	}
 	
-	public GVector2f getOffset() {
-		return offset;
-	}
-	
 	private void resetOffset(){
-		offset = new GVector2f(canvas.getWidth(),canvas.getHeight()).div(-2);;
+		offset = new GVector2f(getParent().getCanvas().getWidth(),getParent().getCanvas().getHeight()).div(-2);;
 	}
 	
 	@Override
 	public void input(){
-		if(Input.isKeyDown(Input.KEY_SPACE))
-			getParent().changeZoom(0.1f);
-		
-		if(Input.isKeyDown(Input.KEY_LSHIFT))
-			getParent().changeZoom(-0.1f);
-		
-
-		if(Input.isKeyDown(Input.KEY_LCONTROL)){
-			GVector2f pos = getSur().mul(Block.SIZE);
-			
-			if(!getParent().hasBomb(pos.toString()))
-				getParent().getConnection().putBomb(this);
-		}
-		
-		
 		move = new GVector2f();
 		
 		if(!keys.get(Input.KEY_W) && Input.isKeyDown(Input.KEY_W))
@@ -104,8 +82,6 @@ public class MyPlayer extends Player{
 			setDirection(3);
 		
 
-		if(!move.isNull())
-			getParent().getConnection().playerMove(move, getDirection());
 	}
 
 	public void update(float delta){
@@ -124,7 +100,9 @@ public class MyPlayer extends Player{
 		
 		checkBorders();
 		checkOffset();
-		
+
+		if(!move.isNull())
+			getParent().getConnection().playerNewPos(this);
 //		if(getParent().hasItem(getSur().toString())){
 //			int type = getParent().getItem(getSur().toString()).getType();
 			
@@ -139,16 +117,16 @@ public class MyPlayer extends Player{
 		float rightOffset = 11;
 		float leftOffset = 9;
 		
-		GVector2f t = position.add(new GVector2f(Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT - topOffset).div(2)).div(Block.SIZE).toInt();
-		GVector2f b = position.add(new GVector2f(Config.PLAYER_WIDTH, Config.PLAYER_HEIGHT + bottomOffset).div(2)).div(Block.SIZE).toInt();
-		GVector2f r = position.add(new GVector2f(Config.PLAYER_WIDTH - rightOffset, Config.PLAYER_HEIGHT).div(2)).div(Block.SIZE).toInt();
-		GVector2f l = position.add(new GVector2f(Config.PLAYER_WIDTH + leftOffset, Config.PLAYER_HEIGHT).div(2)).div(Block.SIZE).toInt();
+		GVector2f t = position.add(new GVector2f(Block.SIZE.getX(), Block.SIZE.getY() - topOffset).div(2)).div(Block.SIZE).toInt();
+		GVector2f b = position.add(new GVector2f(Block.SIZE.getX(), Block.SIZE.getY() + bottomOffset).div(2)).div(Block.SIZE).toInt();
+		GVector2f r = position.add(new GVector2f(Block.SIZE.getX() - rightOffset, Block.SIZE.getY()).div(2)).div(Block.SIZE).toInt();
+		GVector2f l = position.add(new GVector2f(Block.SIZE.getX() + leftOffset , Block.SIZE.getY()).div(2)).div(Block.SIZE).toInt();
 		
 		try{
-			return getParent().getLevel().getMap().getBlock(t.getXi(), t.getYi()).getType() != Block.NOTHING ||
-				   getParent().getLevel().getMap().getBlock(b.getXi(), b.getYi()).getType() != Block.NOTHING ||
-				   getParent().getLevel().getMap().getBlock(r.getXi(), r.getYi()).getType() != Block.NOTHING ||
-				   getParent().getLevel().getMap().getBlock(l.getXi(), l.getYi()).getType() != Block.NOTHING;
+			return !getParent().getLevel().getMap().getBlock(t.getXi(), t.getYi()).isWalkable() ||
+				   !getParent().getLevel().getMap().getBlock(b.getXi(), b.getYi()).isWalkable() ||
+				   !getParent().getLevel().getMap().getBlock(r.getXi(), r.getYi()).isWalkable() ||
+				   !getParent().getLevel().getMap().getBlock(l.getXi(), l.getYi()).isWalkable();
 		}catch(NullPointerException e){
 			return true;
 		}
@@ -156,8 +134,10 @@ public class MyPlayer extends Player{
 	
 	public void checkOffset(){
 		
-		offset.setX(getPosition().getX() * getParent().getZoom() - canvas.getWidth() / 2);
-		offset.setY(getPosition().getY() * getParent().getZoom() - canvas.getHeight() / 2);
+		GVector2f pos = getPosition().mul(getParent().getZoom()).add(Block.SIZE.mul(getParent().getZoom() / 2));
+		
+		offset.setX(pos.getX() - getParent().getCanvas().getWidth() / 2);
+		offset.setY(pos.getY() - getParent().getCanvas().getHeight() / 2);
 
 		GVector2f nums = getParent().getLevel().getMap().getNumberOfBlocks();
 		
@@ -165,14 +145,14 @@ public class MyPlayer extends Player{
 		if(offset.getX() < 0)
 			offset.setX(0);
         
-        if(offset.getX() > (nums.getX() * Config.BLOCK_DEFAULT_WIDTH * getParent().getZoom()) - canvas.getWidth())
-        	offset.setX((nums.getX()* Config.BLOCK_DEFAULT_WIDTH * getParent().getZoom()) - canvas.getWidth());
+        if(offset.getX() > (nums.getX() * Config.BLOCK_DEFAULT_SIZE.getX() * getParent().getZoom()) - getParent().getCanvas().getWidth())
+        	offset.setX((nums.getX() * Config.BLOCK_DEFAULT_SIZE.getX() * getParent().getZoom()) - getParent().getCanvas().getWidth());
         
         if(offset.getY() < 0)
         	offset.setY(0);
         
-        if(offset.getY() > (nums.getY() * Config.BLOCK_DEFAULT_HEIGHT * getParent().getZoom()) - canvas.getHeight())
-        	offset.setY((nums.getY() * Config.BLOCK_DEFAULT_HEIGHT * getParent().getZoom()) - canvas.getHeight()); 
+        if(offset.getY() > (nums.getY() * Config.BLOCK_DEFAULT_SIZE.getY() * getParent().getZoom()) - getParent().getCanvas().getHeight())
+        	offset.setY((nums.getY() * Config.BLOCK_DEFAULT_SIZE.getY() * getParent().getZoom()) - getParent().getCanvas().getHeight()); 
         
 	}
 	
@@ -192,11 +172,11 @@ public class MyPlayer extends Player{
         
         GVector2f nums = getParent().getLevel().getMap().getNumberOfBlocks();
         
-        if(position.getX() * getParent().getZoom() + Config.BLOCK_DEFAULT_WIDTH * getParent().getZoom() > nums.getX() * Config.BLOCK_DEFAULT_WIDTH * getParent().getZoom())
-        	position.setX((nums.getX() * Config.BLOCK_DEFAULT_WIDTH * getParent().getZoom() - Config.BLOCK_DEFAULT_WIDTH * getParent().getZoom()) / getParent().getZoom());
+        if(position.getX() * getParent().getZoom() + Config.BLOCK_DEFAULT_SIZE.getX() * getParent().getZoom() > nums.getX() * Config.BLOCK_DEFAULT_SIZE.getX() * getParent().getZoom())
+        	position.setX((nums.getX() * Config.BLOCK_DEFAULT_SIZE.getX() * getParent().getZoom() - Config.BLOCK_DEFAULT_SIZE.getX() * getParent().getZoom()) / getParent().getZoom());
         
-        if(position.getY() * getParent().getZoom() + Config.BLOCK_DEFAULT_HEIGHT * getParent().getZoom() > nums.getY() * Config.BLOCK_DEFAULT_HEIGHT * getParent().getZoom())
-        	position.setY((nums.getY() * Config.BLOCK_DEFAULT_HEIGHT * getParent().getZoom() - Config.BLOCK_DEFAULT_HEIGHT * getParent().getZoom())  / getParent().getZoom());
+        if(position.getY() * getParent().getZoom() +Config.BLOCK_DEFAULT_SIZE.getY() * getParent().getZoom() > nums.getY() * Config.BLOCK_DEFAULT_SIZE.getY() * getParent().getZoom())
+        	position.setY((nums.getY() * Config.BLOCK_DEFAULT_SIZE.getY() * getParent().getZoom() - Config.BLOCK_DEFAULT_SIZE.getY() * getParent().getZoom())  / getParent().getZoom());
 	}
 	
 	public void clearTotalMove(){
@@ -204,14 +184,23 @@ public class MyPlayer extends Player{
 	}
 	
 	public void drawSelector(Graphics2D g2){
-		GVector2f pos = getSelectorPos().sub(getParent().getOffset());
-		
+		GVector2f pos = getSelectorPos().mul(getParent().getZoom()).sub(getParent().getOffset());
+		GVector2f size = Block.SIZE.mul(getParent().getZoom());
 		g2.setStroke(new BasicStroke(selectorWidth));
 		g2.setColor(selectorColor);
-		g2.drawRect(pos.getXi(), pos.getYi(), Block.SIZE.getXi(), Block.SIZE.getYi());
+		g2.drawRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi());
+		
+		g2.fillRect(pos.getXi() - 2, pos.getYi() - 2, 4, 4);
 	}
 
 	public boolean showSelector() {
 		return showSelector;
+	}
+
+	public GVector2f getOffset() {return offset;}
+	public GVector2f getBulletDirection() {
+		GVector2f sur = position.add(Block.SIZE.mul(getParent().getZoom() / 2));
+		GVector2f dir = Input.getMousePosition().add(getOffset()).sub(sur).Normalized();
+		return dir;
 	}
 }

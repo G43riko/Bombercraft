@@ -3,9 +3,11 @@ package core;
 import java.awt.Canvas;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
+import bombercraft.Bombercraft;
 import bombercraft.Config;
+import utils.GVector2f;
+import utils.Utils;
 
 
 public abstract class CoreEngine {
@@ -13,7 +15,9 @@ public abstract class CoreEngine {
 	private static int FPS = 60;
 	private static int UPS = 60;
 	private boolean running;
-	
+	private float actFPS = FPS;
+	private float actUPS = UPS;
+	private float actLoops = 0;
 	private Window window;
 	private Input input = new Input();
 	private Canvas canvas = new Canvas();
@@ -24,6 +28,9 @@ public abstract class CoreEngine {
 	}
 	
 	public CoreEngine(int fps, int ups, boolean renderTime){
+		defaultInit();
+		
+		
 		RENDER_TIME = renderTime;
 		FPS = fps;
 		UPS = ups;
@@ -31,7 +38,7 @@ public abstract class CoreEngine {
 	
 	public void run(){
 		running = true;
-		defaultInit();
+		
 		mainLoop();
 	}
 	
@@ -51,7 +58,7 @@ public abstract class CoreEngine {
 		final double timeU = 1000000000 / UPS;
 		final double timeF = 1000000000 / FPS;
 		double deltaU = 0, deltaF = 0;
-		int frames = 0, ticks = 0;
+		int frames = 0, ticks = 0, loops = 0;
 		long timer = System.currentTimeMillis();
 
 		    while (running) {
@@ -59,36 +66,47 @@ public abstract class CoreEngine {
 		        deltaU += (currentTime - initialTime) / timeU;
 		        deltaF += (currentTime - initialTime) / timeF;
 		        initialTime = currentTime;
-
+		        
+		        loops++;
+		        
 		        if (deltaU >= 1) {
 		            defaultInput();
-		            //System.out.println(deltaU);
 		            defaultUpdate((float)Math.min(deltaU, 2));
 		            ticks++;
 		            deltaU--;
+		            Utils.sleep(1);
 		        }
 
 		        if (deltaF >= 1) {
 		            defaultRender();
 		            frames++;
 		            deltaF--;
+		            Utils.sleep(1);
 		        }
 
 		        if (System.currentTimeMillis() - timer > 1000) {
 		            if (RENDER_TIME)
-		                System.out.println(String.format("UPS: %s, FPS: %s", ticks, frames));
+		                System.out.println(String.format("UPS: %s, FPS: %s, LOOPS: %s", ticks, frames, loops));
 		            
+		            Bombercraft.totalMessages = new GVector2f(Bombercraft.sendMessages, Bombercraft.recieveMessages);
+		            Bombercraft.sendMessages = 0;
+		            Bombercraft.recieveMessages = 0;
+		            actFPS = frames;
+		            actUPS = ticks;
+		            actLoops = loops;
 		            frames = 0;
 		            ticks = 0;
+		            loops = 0;
 		            timer += 1000;
 		        }
+		        
 		    }
 	}
 	
 	//DEFAULT MAIN METHODS
 	
 	private void defaultInit(){
-		window = new Window(this, Config.WINDOW_DEFAULT_TITLE, Config.WINDOW_DEFAULT_WIDTH, Config.WINDOW_DEFAULT_HEIGHT);
+		window = new Window(this, Config.WINDOW_DEFAULT_TITLE, Config.WINDOW_DEFAULT_SIZE.getXi(), Config.WINDOW_DEFAULT_SIZE.getYi());
 		window.add(canvas);
 		
 		canvas.addMouseListener(input);
@@ -112,7 +130,6 @@ public abstract class CoreEngine {
 			return;
 		}
 		g2 = (Graphics2D)buffer.getDrawGraphics();
-		
 		render(g2);
 		
 //		BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
@@ -125,8 +142,6 @@ public abstract class CoreEngine {
 	
 	//MAIN METHODS
 	
-	
-
 	protected void init(){
 		
 	};
@@ -143,6 +158,8 @@ public abstract class CoreEngine {
 		
 	}
 
+	//GETTERS
+	
 	public Window getWindow() {
 		return window;
 	}
@@ -155,6 +172,19 @@ public abstract class CoreEngine {
 		return input;
 	}
 
+	public float getLoops() {
+		return actLoops;
+	}
+	
+	public float getFPS() {
+		return actFPS;
+	}
+	
+	public float getUPS() {
+		return actUPS;
+	}
+	
 	
 	public abstract void onResize();
+	public abstract void onExit();
 }

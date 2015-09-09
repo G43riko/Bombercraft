@@ -156,9 +156,20 @@ public class GVector2f implements Serializable{
 		return new GVector2f(Math.abs(x), Math.abs(y));
 	};
 
+	public float average(){
+		return (x + y) / 2;
+	}
+	
+	public float sum(){
+		return x + y;
+	}
+	
 	public boolean isNull(){
 		return x == 0 && y == 0;
 	};
+	
+	public float mul() {return x * y;}
+	public float add() {return x + y;}
 	
 	public float getX() {return x;}
 	public float getY() {return y;}

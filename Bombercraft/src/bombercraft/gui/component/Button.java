@@ -1,58 +1,41 @@
 package bombercraft.gui.component;
 
-import utils.GVector2f;
-
-import java.awt.BasicStroke;
-import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
 
 import bombercraft.Config;
+import bombercraft.game.entity.Visible;
+import utils.GVector2f;
 
 public class Button extends GuiComponent{
-	private Color bgInactiveColor = Color.LIGHT_GRAY;
-	private Color bgColor = Color.GREEN;
-	private Color bgHoverColor = Color.DARK_GRAY;
-	private Color textColor = Color.BLACK;
-	
-	public Button(String text,  GVector2f size, int textSize, int nthButton, Canvas canvas) {
+	public Button(Visible parent, String text) {
+		super(parent);
 		this.text = text;
-		this.size = size;
-		this.textSize = textSize;
-		this.canvas = canvas;
-		setActive(true);
-		offset = new GVector2f(0,20);
-		pos = new GVector2f((Config.WINDOW_DEFAULT_WIDTH - size.getXi()) / 2, (nthButton * (size.getYi() + offset.getYi())) + Config.MENU_VERTICAL_OFFSET);
-		textPos = pos.add(new GVector2f(((size.getXi() - (text.length()/2 * textSize))/2), (size.getYi() - textSize)/2 + textSize/4*3));
+		init();
+		
+		if(!buttons.containsKey(parent))
+			buttons.put(parent, 0);
+
+		topCousePrevButtons = buttons.get(parent);
+		buttons.put(parent, topCousePrevButtons + size.getYi() + offset.getYi());
+		
+		calcPosition();
+		textOffset = new GVector2f(CENTER_ALIGN, 0);
 	}
-	
-	public void updateSize(){
-		pos.setX(((canvas.getWidth()- size.getXi()) / 2));
-		textPos.setX(pos.getX() + ((size.getXi() - (text.length()/2 * textSize))/2));
-		
-//		if(canvas.getWidth() - 20 < size.getX())
-//			size.setX(canvas.getWidth() - 20);
+	protected void init(){
+		diableColor = Color.LIGHT_GRAY;
+		backgroundColor = Color.GREEN;
+		hoverColor = Color.DARK_GRAY;
+		borderColor = Color.black;
+		borderWidth = 5;
+		textColor = Color.BLACK;
+		textOffset = new GVector2f();
+		offset = new GVector2f(40, 5);
+		textSize = 36;
+		round = Config.DEFAULT_ROUND;
+		font = "Monospaced";
+		size = new GVector2f(600, 50);
 	}
+
 	
-	@Override
-	public void render(Graphics2D g2) {
-		
-		if(isActive())
-			g2.setColor(hover ? bgHoverColor : bgColor);
-		else
-			g2.setColor(bgInactiveColor);
-		
-		
-		g2.fillRoundRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), round, round);
-		
-		g2.setColor(Color.black);
-		g2.setStroke(new BasicStroke(borderThickness));
-		g2.drawRoundRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), round, round);
-		
-		g2.setColor(textColor);
-		g2.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, textSize));
-		g2.drawString(text, textPos.getXi(), textPos.getYi());
-	}
-	
+
 }

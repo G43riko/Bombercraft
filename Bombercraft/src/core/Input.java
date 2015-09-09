@@ -1,7 +1,5 @@
 package core;
 
-import utils.GVector2f;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -10,8 +8,8 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import bombercraft.gui.Clicable;
-import bombercraft.gui.Menu;
+import bombercraft.gui.component.Clicable;
+import utils.GVector2f;
 
 public class Input implements KeyListener, MouseListener, MouseMotionListener {
 	public final static int KEY_W = 87;

@@ -1,0 +1,6 @@
+name = G43riko
+avatar = player1.png
+msOfPlaying = 0f
+lastLogin = 0f
+newGames = 0
+profilLoaded = 0

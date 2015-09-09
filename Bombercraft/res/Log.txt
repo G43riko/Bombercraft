@@ -1,0 +1,22 @@
+6.9.2015
+-pridané explozie
+-pridané rozlišovanie nepriatelov
+-opravený selector pri zoomovaní
+-všetky deklarácie premených presunuté to hlavièky
+-všetky vlastnosti presunuté do Configu
+-priprava na vytváranie stien
+
+7.9.2015
+-vytvorené 2 druhy stien a univerzlány spride + 16 podmienok
+-steny su zoomovatelne
+-zjednotené ArrayListy a HashMapy v Game  
+-pridany respawner
+
+8.9.2015
+-implementovaný pathfinder
+-vykreslenie pathfinderu
+-pridany adductor
+
+9.9.2015
+-vytvorený worker
+-vytvorená trieda Bot

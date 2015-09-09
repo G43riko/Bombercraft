@@ -1,0 +1,28 @@
+//background_color = 0_0_0
+//windows_width = 800
+//windows_height = 600
+//windows_fps = 60
+//windows_ups = 60
+//windows_title = Bombercraft
+//windows_render_time = false
+
+//menu_offset = 6_6
+//menu_text_size = 36
+//menu_item_size = 600_50
+
+//block_size = 40_40
+
+//zoom = true
+
+//log_size = 20
+
+//port = 4444
+
+
+//shadowLength
+//shadowAngle
+//shadowColor
+//towerRangeColor
+//towerRangeWidth
+//renderMap
+//towerLaserWidth

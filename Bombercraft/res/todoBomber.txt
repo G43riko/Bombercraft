@@ -1,0 +1,149 @@
+toto treba dorobi:
+
+-zoom
+-multiplayers
+-choose IP
+-choose game
+-options
+
+buildings
+	-mine
+	
+
+equipments
+	-bombs -klasická bomba
+	-gun - striela
+	-svetlica - osvetlí okolia
+	-rocket - nièí aj blocky
+	
+type of enemies
+	-chodí rovno a zmenı smer a ked nabúra
+	-mení smer náhodne
+		-striela
+			-striela navádzané strely
+	-pokladá bombu
+		-kotúla bombu
+	-uteká pred bombou
+	-naháòa playera v urèitej vzdialenosti
+	-stavia blocky
+	-vytvára doèasnıch pomocníkov
+	-preskakuje blocky
+	-je neviditelnı do urèitej vzdialenosti
+	
+bonuses
+	-kulomet - striela nepresne
+	-raketomet - striela vybuchujuce rakety
+	-navadzaná strela - nahána enemiho a vybuchuje
+	-laser - striela dos presne
+	-mina - vybuchuje a zranuje enemyho
+	-jama s oštepmi - uvezní jedneho nepriatela
+	-zmrazujuca bomba - zastavı enemyho
+	-spomalujuca bomba - spomalí enemyho
+	-pomocníci - pomáhaju mi ešte neviem ako
+
+-new game options:
+	-select map - size
+	-items
+	-enemies
+	-gamespeed
+	-zoom
+	-fog
+	-online access
+	-difficulty
+	-type of game
+-options
+	-sounds
+	-
+-gameStatistics
+	-put bombs
+	-game time
+	-hits
+	-caused demmage
+	-recieve demage
+	-destroyed blocks
+	-ratio walking/standing
+	-
+
+/*****************CREATE*MAP*****************/
+WATER, WOOD, ROCK, IRON, GRASS, DIRT, WALL
+
+Block 	- healt, position, type,
+		- on destruct put resources OR items
+
+
+
+
+/*****************Interfaces*****************/
+Visible
+	-getPosition()
+	-getSize()
+Interactable
+	-render(Graphics2D g2){};
+	-input(){};
+	-update(float delta){};
+	-cleanUp(){};
+
+/*****************Clases*****************/
+Entity implements Interactable, Visible
+	-id;
+	-size
+	-alive;
+	-parent;
+	-getSur();
+	-isAlive();
+	-toJSON();
+	
+/*****************Start*Old*****************/
+-startNewGame
+	-createGameServer
+		-createLevel
+			-createMap
+	-createGame
+		-setConnection
+			-getLevelFromServer
+			-createLogger
+			-createMyPlayer
+				-setOffset
+			-createPlayerInfo
+	-startGame
+-joinGame
+	-createGameClient
+	-createGame
+		-setConnection
+			-getLevelFromServer
+			-createLogger
+			-createMyPlayer
+				-setOffset
+			-createPlayerInfo
+	-sendImage
+	-startGame
+	
+/*****************Start*New*****************/
+-startNewGame
+	-chooseLevel
+		-createGameServer
+			-createLevel
+				-createMap
+		-createGame
+			-getLevelFromServer
+				-askLevelToAddEnemies
+			-createLogger
+			-createMyPlayer
+				-setOffser
+			-createPlayerInfo
+		-startGame
+-joinGame
+	-createGameClient
+		-searchGames
+			-sendRequest
+			-addGameToList
+		-chooseGame
+		-createGame
+			-setConnection
+				-sendInfoAboutPlayer
+				-recieveLevelJSON
+			-createLogger
+			-createMyPlayer
+				-setOffset
+			-createPlayerInfo
+		-startGame

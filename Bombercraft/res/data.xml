@@ -3,42 +3,156 @@
 	<helper>
 		<tower>
 			<towerMachineGun>
-				<offset></offset>
-				<color></color>
+				<offset>0</offset>
+				<backgroundColor>255_0_255</backgroundColor>
 				<demage>1</demage>
 				<bulletSpeed>12</bulletSpeed>
 				<buletHealt>1</buletHealt>
-				<range>100</range>
-				<accularity>100</accularity>
-				<canon>
-					<speed>5</speed>
-					<color></color>
-					<width>5</width>
-					<length>40</length>
-				</canon>
+				<range>200</range>
+				<cadence>400</cadence>
+				<canonSpeed>5</canonSpeed>
+				<canonColor>255_0_255</canonColor>
+				<canonWidth>5</canonWidth>
+				<canonLength>40</canonLength>
 			</towerMachineGun>
 			<towerLaser></towerLaser>
 			<towerSniper></towerSniper>
 			<towerRocket></towerRocket>
-			<towerFlame></towerFlame>
+			<towerFlameThrower></towerFlameThrower>
 		</tower>
 		<bomb>
-			<bombClasic></bombClasic>
+			<bombBasic></bombBasic>
 			<bombAtom></bombAtom>
 			<bombNano></bombNano>
 			<bombFreeze></bombFreeze>
 			<bombSlime></bombSlime>
 			<bombFire></bombFire>
+			<bombMine></bombMine>
 		</bomb>
+		<weapon>
+			<weaponBasic>
+				<cadence></cadence>
+				<demage></demage>
+				<bulletSpeed></bulletSpeed>
+				<healt></healt>
+			</weaponBasic>
+			<weaponLaser>
+				<cadence>200</cadence>
+				<demage>1</demage>
+				<bulletSpeed>40</bulletSpeed>
+				<healt>1</healt>
+			</weaponLaser>
+			<weaponRocket></weaponRocket>
+			<weaponBow>
+				<cadence>800</cadence>
+				<demage>1</demage>
+				<bulletSpeed>20</bulletSpeed>
+				<healt>1</healt>
+			</weaponBow>
+			<weaponStick>
+				<cadence>400</cadence>
+				<demage>1</demage>
+				<bulletSpeed>5</bulletSpeed>
+				<healt>1</healt>
+			</weaponStick>
+			<weaponBoomerang>
+				<cadence>400</cadence>
+				<demage>1</demage>
+				<bulletSpeed>20</bulletSpeed>
+				<healt>3</healt>
+			</weaponBoomerang>
+			<weaponGranade></weaponGranade>
+			<weaponTargetableRocket></weaponTargetableRocket>
+			<weaponGun></weaponGun>
+			<weaponShotgun></weaponShotgun>
+			<airAttack></airAttack>
+		</weapon>
 	</helper>
 	<enemy>
-		<enemyClasis>
+		<enemyBasic>
 			<offset>5</offset>
 			<speed>1</speed>
 			<demage>1</demage>
 			<cadence>200</cadence>
 			<bulletSpeed>4</bulletSpeed>
 			<healt>1</healt>
-		</enemyClasis>		
+		</enemyBasic>
+		<enemyA>
+			<offset>5</offset>
+			<speed>1</speed>
+			<demage>1</demage>
+			<cadence>200</cadence>
+			<bulletSpeed>4</bulletSpeed>
+			<healt>1</healt>
+		</enemyA>
+		<enemyC>
+			<offset>5</offset>
+			<speed>1</speed>
+			<demage>1</demage>
+			<cadence>2000</cadence>
+			<bulletSpeed>4</bulletSpeed>
+			<healt>1</healt>
+		</enemyC>	
 	</enemy>
+	<particle>
+		<emmiterTest>
+			<color>GREEN</color>
+			<speed>2_0</speed>
+			<healt>100_100</healt>
+			<rotation>0_0</rotation>
+			<direction>0_360</direction>
+			<size>3_3</size>
+			<sizeRandomness>1</sizeRandomness>
+			<positionRandomness>10_10</positionRandomness>
+			<particlePerFrame>1</particlePerFrame>
+			<particlesOnStart>0</particlesOnStart>
+		</emmiterTest>
+		<particleEmmiterGreenMagic></particleEmmiterGreenMagic>
+		<explosionTest></explosionTest>
+		<explosionBowHit></explosionBowHit>
+		<explosionDefaultHit></explosionDefaultHit>
+	</particle>
+	<bullet>
+		<bulletClassic></bulletClassic>
+		<buleltLaser></buleltLaser>
+		<bulletBow></bulletBow>
+		<bulletGranade></bulletGranade>
+		<bulletRocket></bulletRocket>
+		<bulletBoomerang></bulletBoomerang>
+	</bullet>
+	<level>
+		<levelFrozen>
+			<textureFloor></textureFloor>
+			<textureBreakable></textureBreakable>
+			<textureUnbreakable></textureUnbreakable>
+		</levelFrozen>
+		<levelTropical></levelTropical>
+		<levelFuture></levelFuture>
+		<levelFire></levelFire>
+	</level>
+	<keys>
+		<up></up>
+		<down></down>
+		<left></left>
+		<right></right>
+		<escape></escape>
+		<control></control>
+		<shift></shift>
+		<enter></enter>
+		<alt></alt>
+		<tab></tab>
+		<w></w>
+		<a></a>
+		<s></s>
+		<d></d>
+		<q></q>
+		<e></e>
+		<r></r>
+		<f></f>
+		<y></y>
+		<x></x>
+		<c></c>
+		<g></g>
+		
+	</keys>
 </data>

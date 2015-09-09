@@ -1,9 +1,13 @@
 package utils;
 
 public class GLog {
-	public final static int CREATE = 0;
+	public final static boolean CREATE = false;
+	public final static boolean SITE = false;
+	public final static boolean SITE_MESSAGES = false;
+	public final static boolean PROFILE = true;
 	
-	public static void write(int type, Object o){
-		System.out.println(o);
+	public static void write(boolean can, Object o){
+		if(can)
+			System.out.println(o);
 	}
 }
