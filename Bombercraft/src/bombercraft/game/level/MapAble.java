@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 import core.Interactable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public interface MapAble<T> extends Interactable{
 	public T getBlock(int i, int j);

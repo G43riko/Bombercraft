@@ -6,15 +6,15 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import bombercraft.game.entity.Visible;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class GameLine extends GuiComponent{
-	private String game = "Gabova Hra";
-	private String players = "1";
-	private String maxPlayer = "4";
-	private String ip = "127.0.0.1";
-	private String time = "3:49";
-	private String map = "Killer zone";
+	private String game 		= "Gabova Hra";
+	private String players 		= "1";
+	private String maxPlayer 	= "4";
+	private String ip 			= "127.0.0.1";
+	private String time 		= "3:49";
+	private String map 			= "Killer zone";
 	
 
 	public GameLine(Visible parent, String game,String players, String maxPlayer, String ip, String time, String map) {
@@ -29,7 +29,7 @@ public class GameLine extends GuiComponent{
 		calcPosition();
 	}
 	public GameLine(Visible parent) {
-		this(parent, "Názov hry", "Poèet hráèov", "Maximum hráèov", "IP adresa", "Dåžka hry", "Názov mapy");
+		this(parent, "Nozov hry", "Pocet hracov", "Maximum hracov", "IP adresa", "Dlzka hry", "Nazov mapy");
 	}
 	
 	protected void init() {

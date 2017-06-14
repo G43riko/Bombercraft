@@ -1,9 +1,11 @@
-package utils;
+package utils.resources;
 
 import java.awt.Color;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import utils.math.GVector2f;
 
 public class Data{
 	public HashMap<String, GVector2f> dataGVector = new HashMap<String, GVector2f>();

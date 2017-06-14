@@ -2,7 +2,7 @@ package bombercraft.game;
 
 import java.awt.Image;
 
-import utils.ResourceLoader;
+import utils.resources.ResourceLoader;
 
 public class NavBarItem {
 	private String	id;

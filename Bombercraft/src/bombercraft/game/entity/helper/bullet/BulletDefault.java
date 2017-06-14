@@ -6,11 +6,11 @@ import java.awt.Graphics2D;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.particles.Emitter;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class BulletDefault extends Bullet{
-	private int offset = 10;
-	private int round = 15;
+	private int offset	= 10;
+	private int round	= 15;
 	
 	public BulletDefault(GVector2f position, GameAble parent, GVector2f direction, int speed, int healt, int demage, int round, int offset, Color color) {
 		super(position, parent, direction, speed, healt, demage, Block.SIZE.sub(offset * 2), color, Emitter.PARTICLE_EXPLOSION_DEFAULT_HIT);

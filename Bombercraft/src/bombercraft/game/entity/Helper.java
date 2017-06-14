@@ -1,7 +1,7 @@
 package bombercraft.game.entity;
 
 import bombercraft.game.GameAble;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public abstract class Helper extends Entity {
 	public final static String TOWER_MACHINE_GUN	= "towerMachineGun";

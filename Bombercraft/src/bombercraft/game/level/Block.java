@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 import bombercraft.Config;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
-import utils.GVector2f;
-import utils.LineLineIntersect;
 import utils.SpriteViewer;
 import utils.json.JSONObject;
+import utils.math.GVector2f;
+import utils.math.LineLineIntersect;
 
 public class Block extends Entity{
 	public final static GVector2f SIZE  = Config.BLOCK_DEFAULT_SIZE;

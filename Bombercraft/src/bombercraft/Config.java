@@ -2,12 +2,11 @@ package bombercraft;
 
 import java.awt.Color;
 
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Config {
 	public final static Color	BACKGROUND_COLOR		= Color.WHITE;
 	public final static boolean	ALLOW_ZOOMING			= true;
-	public final static int		LOG_DEFAULT_TEXT_SIZE	= 20;
 	public final static int		PORT					= 4444;
 	public final static int		DEFAULT_ROUND			= 20;
 	public final static int		DEFAULT_ZOOM			= 1;
@@ -16,6 +15,9 @@ public class Config {
 	public static final GVector2f	MINIMAP_DEFAULT_SIZE				= new GVector2f(200, 200);
 	public static final GVector2f	MINIMAP_DEFAULT_POSITION			= new GVector2f(10, 10);
 	public static final int			MINIMAP_DEFAULT_BORDER_WIDTH		= 1;
+	
+
+	public final static int		LOG_DEFAULT_TEXT_SIZE	= 20;
 
 	public final static int			BLOCK_DEFAULT_BORDER	= 3;
 	public final static GVector2f	BLOCK_DEFAULT_SIZE		= new GVector2f(40, 40);

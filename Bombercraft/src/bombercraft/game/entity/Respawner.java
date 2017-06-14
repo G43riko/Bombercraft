@@ -5,8 +5,8 @@ import java.awt.Image;
 
 import bombercraft.game.GameAble;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
-import utils.ResourceLoader;
+import utils.math.GVector2f;
+import utils.resources.ResourceLoader;
 
 public class Respawner extends Helper{
 	private String type;

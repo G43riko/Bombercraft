@@ -6,7 +6,7 @@ import java.util.HashMap;
 import bombercraft.game.MenuAble;
 import bombercraft.gui.component.Clicable;
 import bombercraft.gui.component.GuiComponent;
-import utils.GVector2f;
+import utils.math.GVector2f;
 public abstract class Menu extends GuiComponent implements Clicable{
 	protected HashMap<String, GuiComponent> components = new HashMap<String, GuiComponent>();
 	

@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import utils.ResourceLoader;
+import utils.resources.ResourceLoader;
 
 
 public class BlockType {

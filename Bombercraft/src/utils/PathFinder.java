@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import utils.math.GVector2f;
+
 public class PathFinder{
 	private final static int START = 3;
 	private final static int CIEL = 2;

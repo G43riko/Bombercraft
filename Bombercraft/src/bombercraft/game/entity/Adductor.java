@@ -1,14 +1,12 @@
 package bombercraft.game.entity;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
 import bombercraft.game.GameAble;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
-import utils.ResourceLoader;
+import utils.math.GVector2f;
+import utils.resources.ResourceLoader;
 
 public class Adductor extends Helper{
 	private int maxDistance;

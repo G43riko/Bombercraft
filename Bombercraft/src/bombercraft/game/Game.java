@@ -50,14 +50,14 @@ import bombercraft.gui.NavBar;
 import bombercraft.multiplayer.Communicable;
 import core.Input;
 import utils.AudioPlayer;
-import utils.GColision;
 import utils.GLog;
-import utils.GVector2f;
 import utils.Utils;
 import utils.json.JSONObject;
+import utils.math.GColision;
+import utils.math.GVector2f;
+import utils.resources.ResourceLoader;
 
 public class Game implements GameAble, MouseWheelListener{
-	private static HashMap<String, AudioPlayer>	sounds = new HashMap<String, AudioPlayer>(); 
 	private MyPlayer				myPlayer;
 	private Level					level;
 	private boolean					render		= true;
@@ -82,7 +82,7 @@ public class Game implements GameAble, MouseWheelListener{
 	
 	private GVector2f respawnerSur;
 	static{
-		sounds.put("laser", new AudioPlayer("sounds/laser.wav"));
+		ResourceLoader.loadSound("sounds/laser.wav");
 	}
 	//CONSTRUCTORS
 	
@@ -106,7 +106,7 @@ public class Game implements GameAble, MouseWheelListener{
 				players.put(p.getName(), p);
 			};
 		}
-		GLog.write(GLog.CREATE, "Game vytvoren˝");
+		GLog.write(GLog.CREATE, "Game vytvorenÔøΩ");
 		gui = new GUI(this);
 		
 		
@@ -322,7 +322,7 @@ public class Game implements GameAble, MouseWheelListener{
 
 //		tg2.dispose();
 	}
-
+	
 	@Override
 	public void update(float delta) {
 		if(!update)
@@ -463,10 +463,10 @@ public class Game implements GameAble, MouseWheelListener{
 			case Helper.TOWER_LASER :
 				addTower(selectorSur, Helper.TOWER_LASER );
 				break;
-			case Helper.OTHER_RESPAWNER : //TODO upraviù
+			case Helper.OTHER_RESPAWNER : //TODO upraviÔøΩ
 				addRespawner(selectorSur, Enemy.ENEMY_B, 1000);
 				break;
-			case Helper.OTHER_ADDUCTOR : //TODO upraviù
+			case Helper.OTHER_ADDUCTOR : //TODO upraviÔøΩ
 				addAdductor(selectorSur);
 				break;
 			case Helper.BOMB_NORMAL :

@@ -3,8 +3,8 @@
 +laserTower
 +line-rect collision
 +healtbar
-+vea pri vıbere ciela si vyberie najblišieho nie náhodného nepriatela
-+vytvori kopiu mapy pre nového hráèa
++veï¿½a pri vï¿½bere ciela si vyberie najbliï¿½ï¿½ieho nie nï¿½hodnï¿½ho nepriatela
++vytvoriï¿½ kopiu mapy pre novï¿½ho hrï¿½ï¿½a
 +Helper removers
 +weapons
 +tower lightning
@@ -15,6 +15,7 @@
 +draw path 
 +Helper block builder
 
+-minimapu nakresliÅ¥ do obrazka vzdy pri zmene mapy inac vzdy nakreslit obrazok
 -fix tower 
 -fix bullet collision detection
 -helper - bombs
@@ -43,15 +44,15 @@
 -	createProfil
 
 =multiplayer
-+	všetci budu vidie ako sa hybe serverovı hráè
-+	všetci budu vidie ako sa hıbu všetci hráèy
--	bude sa novému clientovy posiela iba jeho respawnZona
++	vï¿½etci budu vidieï¿½ ako sa hybe serverovï¿½ hrï¿½ï¿½
++	vï¿½etci budu vidieï¿½ ako sa hï¿½bu vï¿½etci hrï¿½ï¿½y
+-	bude sa novï¿½mu clientovy posielaï¿½ iba jeho respawnZona
 -	list of games
 
 =pathfinding
-+	s HashMapy<String, Integer> kde 1, 0 = prie/nepriechodne, 2 - start, 3 - ciel - vytvorí cestu
-- 	s HashMapy<String, Integer, kde cislo je dist k cielu najde najkradšiu cestu k cielu
--	s ArrayList<String> 1- start, 2 - ciel  >2 - others kde string je sur poskladá najkradšiu cestu
++	s HashMapy<String, Integer> kde 1, 0 = prie/nepriechodne, 2 - start, 3 - ciel - vytvorï¿½ cestu
+- 	s HashMapy<String, Integer, kde cislo je dist k cielu najde najkradï¿½iu cestu k cielu
+-	s ArrayList<String> 1- start, 2 - ciel  >2 - others kde string je sur poskladï¿½ najkradï¿½iu cestu
  
 
 cts - request to connection

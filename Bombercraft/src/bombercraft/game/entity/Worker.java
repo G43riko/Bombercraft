@@ -7,8 +7,8 @@ import java.awt.Graphics2D;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.enemy.Bot;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
 import utils.Utils;
+import utils.math.GVector2f;
 
 public class Worker extends Bot{
 	protected float 		borderSize = 1;

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import bombercraft.Config;
 import bombercraft.game.level.Block;
 import core.Input;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class MyPlayer extends Player{
 	private GVector2f	offset;
@@ -32,7 +32,8 @@ public class MyPlayer extends Player{
 	}
 	
 	private void resetOffset(){
-		offset = new GVector2f(getParent().getCanvas().getWidth(),getParent().getCanvas().getHeight()).div(-2);;
+		offset = new GVector2f(getParent().getCanvas().getWidth(),getParent().getCanvas().getHeight()).div(-2);
+		
 	}
 	
 	@Override

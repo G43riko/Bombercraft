@@ -7,8 +7,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 
 import bombercraft.game.GameAble;
-import utils.GVector2f;
 import utils.SpriteAnimation;
+import utils.math.GVector2f;
 
 public class BulletMagic extends Bullet{
 	private SpriteAnimation img = new SpriteAnimation("fireball_red.png", 3, 2, 5);

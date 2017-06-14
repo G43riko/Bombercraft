@@ -2,9 +2,9 @@ package bombercraft.game.entity;
 
 import bombercraft.game.GameAble;
 import core.Interactable;
-import utils.GVector2f;
 import utils.IDGenerator;
 import utils.json.JSONObject;
+import utils.math.GVector2f;
 
 public abstract class Entity implements Visible, Interactable{
 	private 	int 		id = IDGenerator.getId();

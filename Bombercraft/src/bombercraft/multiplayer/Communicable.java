@@ -6,7 +6,7 @@ import bombercraft.game.Player;
 import bombercraft.game.entity.helper.Bomb;
 import bombercraft.game.entity.helper.Shootable;
 import bombercraft.game.level.Level;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public interface Communicable {
 	

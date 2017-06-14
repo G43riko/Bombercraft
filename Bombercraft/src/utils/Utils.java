@@ -5,6 +5,8 @@ import java.awt.image.ColorModel;
 import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
 
+import utils.math.GVector2f;
+
 public class Utils {
 	public static  GVector2f getMoveFromDir(int dir){
 		switch(dir){

@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 
 import bombercraft.game.GameAble;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class WallB extends Wall{
 	private int offsetSize = 5;

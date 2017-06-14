@@ -7,7 +7,7 @@ import bombercraft.game.entity.Entity;
 import bombercraft.game.entity.Helper;
 import bombercraft.game.entity.helper.Shootable;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public abstract class Tower extends Helper implements Shootable{
 	protected Entity 	target = null;

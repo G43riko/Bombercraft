@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import bombercraft.gui.component.Clicable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Input implements KeyListener, MouseListener, MouseMotionListener {
 	public final static int KEY_W = 87;

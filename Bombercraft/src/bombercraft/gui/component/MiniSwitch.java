@@ -6,7 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import bombercraft.game.entity.Visible;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class MiniSwitch extends GuiComponent{
 	GVector2f indicatorSize = new GVector2f(24, 24);
@@ -36,16 +36,16 @@ public class MiniSwitch extends GuiComponent{
 	}
 	
 	protected void init(){
-		offset = new GVector2f(2, 2);
-		textSize = 20;
-		textOffset = new GVector2f(4, 0);
-		round = 10;
-		borderWidth = 1;
+		offset 			= new GVector2f(2, 2);
+		textSize 		= 20;
+		textOffset 		= new GVector2f(4, 0);
+		round 			= 10;
+		borderWidth 	= 1;
 		
-		hoverColor = Color.GRAY;
-		textColor = Color.WHITE;
+		hoverColor 		= Color.GRAY;
+		textColor 		= Color.WHITE;
 		backgroundColor = Color.DARK_GRAY;
-		borderColor = Color.LIGHT_GRAY;
+		borderColor 	= Color.LIGHT_GRAY;
 	}
 
 	@Override

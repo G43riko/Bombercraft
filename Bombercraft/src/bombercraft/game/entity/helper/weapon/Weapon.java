@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import bombercraft.game.entity.Helper;
 import bombercraft.game.entity.helper.Shootable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public abstract class Weapon implements Shootable{
 	private static HashMap<String, Weapon> weapons = new HashMap<String, Weapon>(); 

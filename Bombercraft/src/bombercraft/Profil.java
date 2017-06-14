@@ -1,13 +1,20 @@
 package bombercraft;
 
-import utils.Data;
 import utils.GLog;
+import utils.resources.Data;
 
 /*
- * kolko bolo minut hrania kolko bolo nových hier kolko krát bol profil naèítaný
- * kedy bol naposledy uložený
+ * kolko bolo minut hrania kolko bolo novych hier kolko krat bol profil nacitany
+ * kedy bol naposledy ulozeny
  */
 public class Profil {
+	private final static String NAME 			= "name";
+	private final static String AVATAR 			= "avatar";
+	private final static String NEW_GAMES 		= "newGames";
+	private final static String LAST_LOGIN 		= "lastLogin";
+	private final static String PLAYING_TIME 	= "msOfPlaying";
+	private final static String PROFIL_LOADED	= "profilLoaded";
+	
 	private String	name			= "playerName";
 	private String	avatar			= "player1.png";
 	private float	msOfPlaying		= 0;
@@ -20,16 +27,16 @@ public class Profil {
 	public Profil(String profilName) {
 		Data d = new Data("profiles/" + profilName + ".txt");
 
-		name = d.getString("name");
-		avatar = d.getString("avatar");
-		msOfPlaying = d.getFloat("msOfPlaying");
-		newGames = d.getInt("newGames");
-		profilLoaded = d.getInt("profilLoaded");
+		name 			= d.getString(NAME);
+		avatar 			= d.getString(AVATAR);
+		newGames 		= d.getInt(NEW_GAMES);
+		profilLoaded 	= d.getInt(PROFIL_LOADED);
+		msOfPlaying 	= d.getFloat(PLAYING_TIME);
 
 		lastLogin = System.currentTimeMillis();
 		profilLoaded++;
 
-		GLog.write(GLog.PROFILE, "naèítal sa profil: " + this);
+		GLog.write(GLog.PROFILE, "nacital sa profil: " + this);
 	}
 
 	// OTHERS
@@ -38,14 +45,14 @@ public class Profil {
 		profil.msOfPlaying += (System.currentTimeMillis() - profil.lastLogin);
 
 		StringBuilder profile = new StringBuilder();
-		profile.append("name = " + profil.name + System.getProperty("line.separator"));
-		profile.append("avatar = " + profil.avatar + System.getProperty("line.separator"));
-		profile.append("msOfPlaying = " + profil.msOfPlaying + System.getProperty("line.separator"));
-		profile.append("lastLogin = " + profil.lastLogin + System.getProperty("line.separator"));
-		profile.append("newGames = " + profil.newGames + System.getProperty("line.separator"));
-		profile.append("profilLoaded = " + profil.profilLoaded + System.getProperty("line.separator"));
+		profile.append("name = " 			+ profil.name 			+ System.lineSeparator());
+		profile.append("avatar = " 			+ profil.avatar 		+ System.lineSeparator());
+		profile.append("msOfPlaying = " 	+ profil.msOfPlaying 	+ System.lineSeparator());
+		profile.append("lastLogin = " 		+ profil.lastLogin 		+ System.lineSeparator());
+		profile.append("newGames = " 		+ profil.newGames 		+ System.lineSeparator());
+		profile.append("profilLoaded = " 	+ profil.profilLoaded 	+ System.lineSeparator());
 
-		GLog.write(GLog.PROFILE, "uložil sa profil: " + profile);
+		GLog.write(GLog.PROFILE, "ulozil sa profil: " + profile);
 	}
 
 	// OVERRIDES

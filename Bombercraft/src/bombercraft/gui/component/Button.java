@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import bombercraft.Config;
 import bombercraft.game.entity.Visible;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Button extends GuiComponent{
 	public Button(Visible parent, String text) {

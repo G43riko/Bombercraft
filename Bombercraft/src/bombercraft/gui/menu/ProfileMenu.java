@@ -5,8 +5,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import utils.GVector2f;
 import bombercraft.gui.component.Button;
+import utils.math.GVector2f;
 
 public class ProfileMenu extends Menu{
 	private ArrayList<String> availableProfiles = loadProfiles(); 
@@ -41,10 +41,10 @@ public class ProfileMenu extends Menu{
 	protected void init() {
 		availableProfiles.stream().forEach(a -> addComponent(a, new Button(this,a)));
 		
-		addComponent("createProfile", new Button(this, "vytvoriù nov˝ profil"));
+		addComponent("createProfile", new Button(this, "vytvorit novy profil"));
 		components.get("createProfile").setDisable(true);
 		
-		addComponent("back", new Button(this, "Nasp‰ù"));
+		addComponent("back", new Button(this, "Naspa"));
 		components.get("back").setDisable(true);
 	}
 

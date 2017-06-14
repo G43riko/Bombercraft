@@ -10,7 +10,7 @@ import bombercraft.game.GameAble;
 import bombercraft.gui.component.GuiComponent;
 import bombercraft.gui.component.MiniButton;
 import bombercraft.gui.component.MiniSwitch;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class SideBar extends Bar{
 	private int offset = Config.SIDEBAR_DEFAULT_OFFSET;

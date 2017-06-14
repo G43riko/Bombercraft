@@ -13,8 +13,8 @@ import bombercraft.multiplayer.GameClient;
 import bombercraft.multiplayer.GameServer;
 import core.CoreEngine;
 import core.Input;
-import utils.GVector2f;
 import utils.Utils;
+import utils.math.GVector2f;
 
 public abstract class CoreGame extends CoreEngine implements MenuAble{
 	public static final int	MAIN_MENU	= 0;
@@ -205,7 +205,7 @@ public abstract class CoreGame extends CoreEngine implements MenuAble{
 
 	public void setProfile(String profilName){
 		if(profil != null)
-				Profil.saveProfil(profil);
+			Profil.saveProfil(profil);
 		
 		profil = new Profil(profilName);
 	}

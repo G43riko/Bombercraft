@@ -9,8 +9,8 @@ import java.util.HashMap;
 import bombercraft.game.entity.Visible;
 import core.Input;
 import core.Interactable;
-import utils.GColision;
-import utils.GVector2f;
+import utils.math.GColision;
+import utils.math.GVector2f;
 
 public abstract class GuiComponent implements Interactable, Visible{
 	protected final static int 		SIDEBAR_DEFAULT_BUTTON_HEIGHT = 30;

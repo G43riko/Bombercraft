@@ -6,7 +6,7 @@ import bombercraft.Config;
 import bombercraft.game.Game;
 import bombercraft.game.GameAble;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
+import utils.math.GVector2f;
 /*   |
  * --+-- B
  * 	 |

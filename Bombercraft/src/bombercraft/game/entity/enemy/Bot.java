@@ -4,15 +4,15 @@ import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
 import bombercraft.game.level.Block;
 import bombercraft.game.level.Map;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public abstract class Bot extends Entity{
 	public final static String WORKER_A = "workerA";
 	public final static String WORKER_B = "workerB";
-	public static final String WORKER_C = "workerC";
+	public final static String WORKER_C = "workerC";
 	public final static String ENEMY_A = "enemyA";
 	public final static String ENEMY_B = "enemyB";
-	public static final String ENEMY_C = "enemyC";
+	public final static String ENEMY_C = "enemyC";
 	
 	protected final static int UNDEFINED = -2;
 	protected int 			direction = UNDEFINED;

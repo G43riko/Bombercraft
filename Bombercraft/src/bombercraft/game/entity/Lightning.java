@@ -9,7 +9,7 @@ import java.util.List;
 
 import bombercraft.game.GameAble;
 import core.Interactable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Lightning extends Entity{
     private List<Lightning> lines;

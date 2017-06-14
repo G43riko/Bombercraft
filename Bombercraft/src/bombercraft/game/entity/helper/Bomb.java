@@ -8,7 +8,7 @@ import bombercraft.Config;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Helper;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Bomb extends Helper{
 	private long addedAt;

@@ -11,7 +11,7 @@ import bombercraft.game.GameAble;
 import bombercraft.game.entity.helper.bullet.Bullet;
 import bombercraft.game.level.Block;
 import core.Input;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class TowerLaser extends Tower{
 	private GVector2f point2;

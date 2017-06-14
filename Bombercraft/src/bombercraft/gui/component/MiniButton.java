@@ -3,7 +3,7 @@ package bombercraft.gui.component;
 import java.awt.Color;
 
 import bombercraft.game.entity.Visible;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class MiniButton extends GuiComponent{
 	public MiniButton(Visible parent, String text){
@@ -26,16 +26,16 @@ public class MiniButton extends GuiComponent{
 	}
 	
 	protected void init(){
-		offset = new GVector2f(2, 2);
-		textSize = 20;
-		textOffset = new GVector2f(4, 0);
-		round = 10;
-		borderWidth = 1;
+		offset 			= new GVector2f(2, 2);
+		textSize 		= 20;
+		textOffset 		= new GVector2f(4, 0);
+		round 			= 10;
+		borderWidth 	= 1;
 		
-		hoverColor = Color.GRAY;
-		textColor = Color.WHITE;
+		hoverColor 		= Color.GRAY;
+		textColor 		= Color.WHITE;
 		backgroundColor = Color.DARK_GRAY;
-		borderColor = Color.LIGHT_GRAY;
+		borderColor 	= Color.LIGHT_GRAY;
 	}
 
 	@Override

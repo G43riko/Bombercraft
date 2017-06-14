@@ -1,7 +1,7 @@
 package bombercraft.gui.menu;
 
-import utils.GVector2f;
 import bombercraft.gui.component.Button;
+import utils.math.GVector2f;
 
 public class OptionsMenu extends Menu{
 	private MainMenu parent;
@@ -10,7 +10,7 @@ public class OptionsMenu extends Menu{
 		super(parent.getCoreGame());
 		this.parent = parent;
 		
-		addComponent("back", new Button(this, "Nasp‰ù"));
+		addComponent("back", new Button(this, "Naspa"));
 	}
 
 	@Override

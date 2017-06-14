@@ -6,8 +6,8 @@ import java.awt.image.BufferStrategy;
 
 import bombercraft.Bombercraft;
 import bombercraft.Config;
-import utils.GVector2f;
 import utils.Utils;
+import utils.math.GVector2f;
 
 
 public abstract class CoreEngine {

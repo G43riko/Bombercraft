@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 
 import bombercraft.Config;
 import core.Interactable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Minimap implements Interactable{
 	private GVector2f position  = Config.MINIMAP_DEFAULT_POSITION;

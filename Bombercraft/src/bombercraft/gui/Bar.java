@@ -7,11 +7,11 @@ import bombercraft.game.entity.Visible;
 import bombercraft.gui.component.Clicable;
 import core.Input;
 import core.Interactable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public abstract class Bar implements Interactable, Clicable, Visible{
-	private Color backgroundColor = Color.WHITE;
-	private Color borderColor = Color.DARK_GRAY;
+	private Color backgroundColor 	= Color.WHITE;
+	private Color borderColor 		= Color.DARK_GRAY;
 	
 	protected GVector2f size;
 	protected GVector2f totalSize;

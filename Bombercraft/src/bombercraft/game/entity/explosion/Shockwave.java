@@ -6,21 +6,27 @@ import java.awt.Graphics2D;
 
 import bombercraft.game.GameAble;
 import core.Interactable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Shockwave implements Interactable{
 	private GameAble 	parent;
 	private int 		maxRadius;
 	private int			stroke;
 	private int 		speed;
-	private int 		radius = 0;
-	private int 		alphaDiff = 0;
-	private boolean 	alive = true;
+	private int 		radius 		= 0;
+	private int 		alphaDiff 	= 0;
+	private boolean 	alive 		= true;
 	private Color 		color;
 	private GVector2f 	position;
 	//CONTRUCTORS
 	
-	public Shockwave(GameAble parent, GVector2f position, int maxRadius, int stroke, int speed, Color color, boolean fadeOut) {
+	public Shockwave(GameAble parent, 
+					 GVector2f position, 
+					 int maxRadius, 
+					 int stroke, 
+					 int speed, 
+					 Color color, 
+					 boolean fadeOut) {
 		super();
 		this.position = position;
 		this.maxRadius = maxRadius;
@@ -29,8 +35,9 @@ public class Shockwave implements Interactable{
 		this.speed = speed;
 		this.color = color;
 		
-		if(fadeOut)
+		if(fadeOut){
 			alphaDiff = 255 / (maxRadius / speed);
+		}
 	}
 	
 	//OVERRIDES
@@ -49,8 +56,9 @@ public class Shockwave implements Interactable{
 	@Override
 	public void update(float delta) {
 		radius += speed;
-		if(radius >= maxRadius)
+		if(radius >= maxRadius){
 			alive = false;
+		}
 	}
 	
 	//GETTERS

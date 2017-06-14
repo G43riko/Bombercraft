@@ -1,4 +1,4 @@
-package utils;
+package utils.math;
 
 public class LineLineIntersect {
 	public boolean sameString(long a, long b){
@@ -13,11 +13,12 @@ public class LineLineIntersect {
 	}
 	
 	public GVector2f linesIntersetc(long x1 , long y1, long x2, long y2, long x3, long y3, long x4, long y4){
-		long a1, a2, b1, b2, c1, c2; /* Coefficients of line eqns. */
-		long r1, r2, r3, r4;         /* 'Sign' values */
-		long denom, offset, num;     /* Intermediate values */
-		long x, y;
-
+		final long a1, a2, b1, b2, c1, c2; /* Coefficients of line eqns. */
+		final long r1, r2, r3, r4;         /* 'Sign' values */
+		final long denom, offset;     /* Intermediate values */
+		final long x, y;
+		long num;
+		
 		a1 = y2 - y1;
 		b1 = x1 - x2;
 		c1 = x2 * y1 - x1 * y2;
@@ -25,8 +26,9 @@ public class LineLineIntersect {
 		r3 = a1 * x3 + b1 * y3 + c1;
 		r4 = a1 * x4 + b1 * y4 + c1;
 		
-		if(r3 != 0 && r4 != 0 && sameString(r3, r4))
+		if(r3 != 0 && r4 != 0 && sameString(r3, r4)){
 			return null;
+		}
 
 		a2 = y4 - y3;
 		b2 = x3 - x4;
@@ -35,8 +37,9 @@ public class LineLineIntersect {
 		r1 = a2 * x1 + b2 * y1 + c2;
 		r2 = a2 * x2 + b2 * y2 + c2;
 		
-		if(r1 != 0 && r2 != 0 && sameString(r1, r2))
+		if(r1 != 0 && r2 != 0 && sameString(r1, r2)){
 			return null;
+		}
 
 		denom = a1 * b2 - a2 * b1;
 		if (denom == 0)

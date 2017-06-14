@@ -9,7 +9,7 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
 import bombercraft.game.entity.Entity;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Light extends Entity{
 	private static float[]	borders	= new float[] { 0, 1 };
@@ -73,13 +73,13 @@ public class Light extends Entity{
 						 position.getXi() - size.getXi(), 
 						 position.getYi() - size.getYi(), null);
 		else{
-		Point2D.Float point = new Point2D.Float(position.getX(), position.getY());
-		g2.setPaint(new RadialGradientPaint(point, size.max(), borders, colors, CycleMethod.REFLECT));
-		g2.fillArc(position.getXi() - size.getXi(), 
-				   position.getYi() - size.getYi(), 
-				   size.getXi() * 2, 
-				   size.getYi() * 2, 
-				   0, 360);
+			Point2D.Float point = new Point2D.Float(position.getX(), position.getY());
+			g2.setPaint(new RadialGradientPaint(point, size.max(), borders, colors, CycleMethod.REFLECT));
+			g2.fillArc(position.getXi() - size.getXi(), 
+					   position.getYi() - size.getYi(), 
+					   size.getXi() * 2, 
+					   size.getYi() * 2, 
+					   0, 360);
 		}
 //		setAngle(angle + 0.1); 
 //		setOffset(offset - 1);

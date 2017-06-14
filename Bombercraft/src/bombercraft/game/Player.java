@@ -5,9 +5,9 @@ import java.awt.Graphics2D;
 import bombercraft.PlayerSprite;
 import bombercraft.game.entity.Entity;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
 import utils.Utils;
 import utils.json.JSONObject;
+import utils.math.GVector2f;
 
 public class Player extends Entity{
 	private int		speed;

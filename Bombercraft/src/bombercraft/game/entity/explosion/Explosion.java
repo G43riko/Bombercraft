@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
 import bombercraft.game.entity.particles.Particle;
-import utils.GVector2f;
 import utils.SpriteAnimation;
+import utils.math.GVector2f;
 
 public class Explosion extends Entity{
 	private ArrayList<Shockwave>	 	waves 		= new ArrayList<Shockwave>();

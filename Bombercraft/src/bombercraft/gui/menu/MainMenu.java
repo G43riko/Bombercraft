@@ -6,14 +6,17 @@ import bombercraft.game.CoreGame;
 import bombercraft.game.MenuAble;
 import bombercraft.gui.component.Button;
 import core.Input;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class MainMenu extends Menu{
-	public final static int MAIN_MENU = 0;
-	public final static int OPTIONS = 1;
-	public final static int OPTIONS_NEW_GAME = 2;
-	public final static int OPTIONS_JOIN_GAME = 3;
-	public final static int OPTIONS_PROFILE = 4;
+	enum ActualMenu{
+		MAIN_MENU,OPTIONS, OPTIONS_NEW_GAME, OPTIONS_JOIN_GAME, OPTIONS_PROFILE;
+	}
+	public final static int MAIN_MENU 			= 0;
+	public final static int OPTIONS 			= 1;
+	public final static int OPTIONS_NEW_GAME 	= 2;
+	public final static int OPTIONS_JOIN_GAME 	= 3;
+	public final static int OPTIONS_PROFILE 	= 4;
 	private MenuAble coreGame; 
 	private int actMenu  = OPTIONS_PROFILE;
 	private JoinGameMenu joinMenu;
@@ -104,11 +107,11 @@ public class MainMenu extends Menu{
 
 	@Override
 	protected void init() {
-		addComponent("newGame", new Button(this, "Nov· hra"));
-		addComponent("continue", new Button(this, "PokraËovaù"));
-		addComponent("stopGame", new Button(this, "Stopn˙ù hru"));
-		addComponent("joinGame", new Button(this, "Pripojiù sa k hre"));
-		addComponent("changeProfil", new Button(this, "Zmeniù profil"));
+		addComponent("newGame", new Button(this, "Nova hra"));
+		addComponent("continue", new Button(this, "Pokracovat"));
+		addComponent("stopGame", new Button(this, "Stopnut hru"));
+		addComponent("joinGame", new Button(this, "Pripojit sa k hre"));
+		addComponent("changeProfil", new Button(this, "Zmenit profil"));
 		addComponent("options", new Button(this, "Nastavenia"));
 		addComponent("exit", new Button(this, "Koniec"));
 		

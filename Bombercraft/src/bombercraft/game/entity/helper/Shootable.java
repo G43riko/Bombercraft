@@ -1,6 +1,6 @@
 package bombercraft.game.entity.helper;
 
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public interface Shootable {
 	public GVector2f 	getPosition();

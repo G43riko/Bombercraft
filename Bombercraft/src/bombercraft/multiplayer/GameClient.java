@@ -10,9 +10,9 @@ import bombercraft.game.level.Level;
 import bombercraft.multiplayer.core.Client;
 import bombercraft.multiplayer.core.Server;
 import utils.GLog;
-import utils.GVector2f;
 import utils.Utils;
 import utils.json.JSONObject;
+import utils.math.GVector2f;
 
 public class GameClient extends Client implements Communicable{
 	private Level actLevel;
@@ -22,7 +22,7 @@ public class GameClient extends Client implements Communicable{
 	
 	public GameClient(CoreGame coreGame){
 		this.coreGame = coreGame;
-		GLog.write(GLog.CREATE, "GameClient vytvorený");
+		GLog.write(GLog.CREATE, "GameClient vytvorenï¿½");
 	}
 	
 	//PUTTERS

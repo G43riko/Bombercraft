@@ -10,8 +10,8 @@ import bombercraft.Config;
 import bombercraft.game.Game;
 import bombercraft.game.entity.helper.bullet.Bullet;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
 import utils.Utils;
+import utils.math.GVector2f;
 
 public class EnemyB extends Enemy{
 	private static HashMap<String, String> data = Bombercraft.getData(Enemy.ENEMY_B);

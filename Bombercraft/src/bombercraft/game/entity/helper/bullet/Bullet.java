@@ -5,7 +5,7 @@ import java.awt.Color;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public abstract class Bullet extends Entity{
 	public final static String BULLET_BASIC 	= "bulletBasic";

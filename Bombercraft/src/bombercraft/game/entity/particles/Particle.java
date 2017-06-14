@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class Particle extends Entity{
 	private GVector2f direction;

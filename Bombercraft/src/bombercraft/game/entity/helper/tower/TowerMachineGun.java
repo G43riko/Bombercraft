@@ -10,7 +10,7 @@ import bombercraft.game.GameAble;
 import bombercraft.game.entity.Helper;
 import bombercraft.game.entity.enemy.Enemy;
 import bombercraft.game.entity.helper.bullet.Bullet;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class TowerMachineGun extends Tower{
 	private static HashMap<String, String> data = Bombercraft.getData(Helper.TOWER_MACHINE_GUN);
@@ -95,7 +95,7 @@ public class TowerMachineGun extends Tower{
 		ArrayList<Enemy> enemies = getParent().getEnemiesAround(position, getRange());
 		
 		if(enemies.size() > 0){
-			//target = enemies.get((int)(Math.random() * enemies.size())); -- vyberalo náhodného nie najbližšie
+			//target = enemies.get((int)(Math.random() * enemies.size())); -- vyberalo nï¿½hodnï¿½ho nie najbliï¿½ï¿½ie
 			target = enemies.stream()
 							.reduce((a, b) -> a.getPosition().dist(position) > b.getPosition().dist(position) ? a : b).get();
 			GVector2f dir = position.sub(target.getPosition()).Normalized();

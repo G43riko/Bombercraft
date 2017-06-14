@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 import bombercraft.game.GameAble;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
 import utils.PathFinder;
+import utils.math.GVector2f;
 
 public class Path extends Entity{
 	private ArrayList<GVector2f> points;

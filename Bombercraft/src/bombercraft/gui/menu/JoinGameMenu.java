@@ -2,7 +2,7 @@ package bombercraft.gui.menu;
 
 import bombercraft.game.MenuAble;
 import bombercraft.gui.component.GameLine;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class JoinGameMenu extends Menu {
 

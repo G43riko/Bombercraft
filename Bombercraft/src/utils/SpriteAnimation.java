@@ -3,6 +3,9 @@ package utils;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+import utils.math.GVector2f;
+import utils.resources.ResourceLoader;
+
 public class SpriteAnimation {
 	private int delay;
 	private int actDelay;

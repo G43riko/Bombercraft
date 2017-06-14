@@ -5,6 +5,9 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import utils.math.GVector2f;
+import utils.resources.ResourceLoader;
+
 public class SpriteViewer {
 	private static HashMap<String, SpriteViewer> loadedImages = new HashMap<String, SpriteViewer>();
 	private GVector2f images;

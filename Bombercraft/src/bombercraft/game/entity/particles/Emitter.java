@@ -8,8 +8,8 @@ import java.util.HashMap;
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
 import bombercraft.game.level.Block;
-import utils.GVector2f;
 import utils.json.JSONObject;
+import utils.math.GVector2f;
 
 public abstract class Emitter extends Entity{
 	private static HashMap<String, String> predefinedParticles = new HashMap<String, String>();

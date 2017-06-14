@@ -16,9 +16,9 @@ public class GUI implements Interactable{
 	private GameLogs logs;
 	
 	public GUI(Game game){
-		navBar = new NavBar(game);
+		navBar 	= new NavBar(game);
 		sideBar = new SideBar(game);
-		logs = new GameLogs(game);
+		logs 	= new GameLogs(game);
 		minimap = new Minimap(game.getLevel().getMap());
 	}
 	
@@ -57,19 +57,8 @@ public class GUI implements Interactable{
 			sideBar.update(delta);
 	}
 
-	public Minimap getMinimap() {
-		return minimap;
-	}
-
-	public SideBar getSideBar() {
-		return sideBar;
-	}
-
-	public NavBar getNavBar() {
-		return navBar;
-	}
-
-	public GameLogs getLogs() {
-		return logs;
-	}
+	public Minimap getMinimap() {return minimap;}
+	public SideBar getSideBar() {return sideBar;}
+	public NavBar getNavBar() {return navBar;}
+	public GameLogs getLogs() {return logs;}
 }

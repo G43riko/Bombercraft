@@ -13,7 +13,7 @@ import bombercraft.game.level.Level;
 import bombercraft.gui.NavBar;
 import bombercraft.multiplayer.Communicable;
 import core.Interactable;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public interface GameAble extends Interactable, Visible{
 	public Communicable 			getConnection();

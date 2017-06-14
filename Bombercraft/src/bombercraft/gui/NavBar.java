@@ -11,8 +11,8 @@ import bombercraft.game.NavBarItem;
 import bombercraft.game.entity.Helper;
 import bombercraft.game.level.Block;
 import core.Input;
-import utils.GColision;
-import utils.GVector2f;
+import utils.math.GColision;
+import utils.math.GVector2f;
 
 public class NavBar extends Bar{
 	private static HashMap<String, NavBarItem> allItems = new HashMap<String, NavBarItem>();

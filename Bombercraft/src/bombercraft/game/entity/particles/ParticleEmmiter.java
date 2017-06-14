@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import bombercraft.game.GameAble;
 import bombercraft.game.entity.Entity;
-import utils.GVector2f;
+import utils.math.GVector2f;
 
 public class ParticleEmmiter extends Emitter{
 	private Entity target;

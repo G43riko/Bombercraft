@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 import bombercraft.Bombercraft;
 import bombercraft.game.GameAble;
 import core.Interactable;
-import utils.GVector2f;
 import utils.json.JSONObject;
+import utils.math.GVector2f;
 
 public class Map implements Interactable{
 	private HashMap<String, Block> blocks;
@@ -50,7 +50,6 @@ public class Map implements Interactable{
 	public void render(Graphics2D g2) {
 		if(!render)
 			return;
-		
 		if(Bombercraft.getViewOption("renderShadow")){
 			ArrayList<Block> temp = new HashMap<String, Block>(blocks).entrySet()
 				   							  						  .stream()

@@ -1,4 +1,4 @@
-package utils;
+package utils.resources;
 
 import java.io.InputStream;
 import java.util.HashMap;

@@ -3,15 +3,16 @@ package bombercraft;
 import java.util.HashMap;
 
 import bombercraft.game.CoreGame;
-import utils.Data;
-import utils.GVector2f;
-import utils.OptionsParser;
-import utils.XMLParser;
+import utils.math.GVector2f;
+import utils.resources.Data;
+import utils.resources.OptionsParser;
+import utils.resources.ResourceLoader;
+import utils.resources.XMLParser;
 
 public class Bombercraft extends CoreGame {
-	private static XMLParser				parser			= new XMLParser("data.xml");
-	private static HashMap<String, Boolean>	viewOptions		= OptionsParser.loadOnlyBooleanFile("viewOptions.txt");
-	private static Data						viewData		= new Data("viewData.txt");
+	private static XMLParser				parser			= ResourceLoader.getXMLParser("data.xml");
+	private static HashMap<String, Boolean>	viewOptions		= ResourceLoader.getBooleanOptions("viewOptions.txt");
+	
 	public static  int						sendMessages	= 0;
 	public static  int						recieveMessages	= 0;
 	public static  GVector2f				totalMessages	= null;
@@ -23,28 +24,7 @@ public class Bombercraft extends CoreGame {
 	public static boolean getViewOption(String option) {
 		return viewOptions.get(option);
 	}
-
 	public static HashMap<String, String> getData(String type) {
 		return parser.getData(type);
-	}
-
-	public static int getInt(String value) {
-		return viewData.getInt(value);
-	}
-
-	public static boolean getBoolean(String value) {
-		return viewData.getBoolean(value);
-	}
-
-	public static float getFloat(String value) {
-		return viewData.getFloat(value);
-	}
-
-	public static GVector2f getVector2f(String value) {
-		return viewData.getVector2f(value);
-	}
-
-	public static String getString(String value) {
-		return viewData.getString(value);
 	}
 }

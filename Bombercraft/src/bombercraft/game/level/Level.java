@@ -7,8 +7,8 @@ import java.util.List;
 import bombercraft.game.GameAble;
 import core.Interactable;
 import utils.GLog;
-import utils.GVector2f;
 import utils.json.JSONObject;
+import utils.math.GVector2f;
 
 public class Level implements Interactable {
 	private Map map;
@@ -31,7 +31,7 @@ public class Level implements Interactable {
 	
 	public Level(){
 		respawnZones.add(new GVector2f(40, 40));
-		GLog.write(GLog.CREATE, "Level vytvorený");
+		GLog.write(GLog.CREATE, "Level vytvorenï¿½");
 		setDefaultPlayerInfo();
 	}
 	
